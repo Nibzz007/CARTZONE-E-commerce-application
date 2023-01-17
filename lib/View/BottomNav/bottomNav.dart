@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:second_project/View/Bag/bag.dart';
-import 'package:second_project/View/Home/homeScreen.dart';
-import 'package:second_project/View/Profile/profileScreen.dart';
+import 'package:second_project/View/Home/home_screen.dart';
+import 'package:second_project/View/Account/account_screen.dart';
 import 'package:second_project/View/Wishlist/wishlistScreen.dart';
 
 class BottomNav extends StatefulWidget {

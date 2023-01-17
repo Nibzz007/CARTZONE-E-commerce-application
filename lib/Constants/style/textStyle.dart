@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:second_project/Colours/colours.dart';
 
 //Login screen
 
@@ -16,12 +17,33 @@ TextStyle loginDonthaveacnt = GoogleFonts.montserrat(
   fontWeight: FontWeight.w500,
 );
 
+//Elevated button text style
+
+TextStyle elvatedButtonTextStyle = GoogleFonts.montserrat(
+  fontSize: 19,
+  fontWeight: FontWeight.w600,
+);
+ TextStyle elvatedTextStyle = GoogleFonts.montserrat(
+  fontSize: 20,
+  fontWeight: FontWeight.w700,
+  color: kBlack
+);
+
+
 //Signup screen
 
 TextStyle signupStyle = GoogleFonts.montserrat(
   fontSize: 30,
   fontWeight: FontWeight.w700,
 );
+
+//Home Screen
+
+TextStyle categoryStyle = GoogleFonts.montserrat(
+  fontSize: 20,
+  fontWeight: FontWeight.w500,
+);
+
 
 //Appbar title style
 
@@ -36,6 +58,58 @@ TextStyle wishlistTitleStyle = GoogleFonts.montserrat(
   fontSize: 20,
   fontWeight: FontWeight.w600,
 );
+
+//Account screen
+
+TextStyle nameStyle = GoogleFonts.montserrat(
+  fontSize: 25,
+  fontWeight: FontWeight.w600,
+);
+
+TextStyle listStyle = GoogleFonts.montserrat(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+);
+
+//ShowDialog 
+
+TextStyle confirmationTextStyle = GoogleFonts.montserrat(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  color: kBlack
+);
+
+//My Cart
+
+TextStyle myCartSubtitileStyle = GoogleFonts.montserrat(
+  fontSize: 16,
+  fontWeight: FontWeight.w600,
+  color: kBlack
+);
+
+//Checkout
+
+TextStyle checkOutHeadStyle = GoogleFonts.montserrat(
+  fontSize: 18,
+  fontWeight: FontWeight.w600,
+  color: kBlack
+);
+
+TextStyle checkOutAddressStyle = GoogleFonts.montserrat(
+  fontSize: 16,
+  fontWeight: FontWeight.w400,
+  color: kBlack
+);
+
+//Selected item
+
+TextStyle priceStyle = GoogleFonts.montserrat(
+  fontSize: 16,
+  fontWeight: FontWeight.w500,
+  color: kBlack
+);
+
+
 
 
 

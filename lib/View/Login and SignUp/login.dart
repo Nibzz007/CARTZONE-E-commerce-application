@@ -41,6 +41,7 @@ class LogInScreen extends StatelessWidget {
                 kHeight10,
                 TextFormFieldWidget(
                   hintText: 'Enter your password',
+                  obscureText: true,
                   icon: const Icon(Icons.password_outlined),
                 ),
                 kHeight20,
@@ -53,7 +54,7 @@ class LogInScreen extends StatelessWidget {
                       ),
                     );
                   },
-                  text: '               Login              ',
+                  text: 'Login',
                 ),
                 kHeight10,
                 const Text('Or'),

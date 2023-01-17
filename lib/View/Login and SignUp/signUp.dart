@@ -17,7 +17,7 @@ class SignUpScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: [
-              kHeight80,
+              kHeight40,
               Row(
                 children: [
                   kHeight40,
@@ -49,6 +49,13 @@ class SignUpScreen extends StatelessWidget {
                 icon: const Icon(Icons.password_outlined),
               ),
               kHeight20,
+              RowTextWidget(text: 'Confirm Password'),
+              kHeight10,
+              TextFormFieldWidget(
+                hintText: 'Confirm password',
+                icon: Icon(Icons.password_outlined),
+              ),
+              kHeight20,
               RowTextWidget(text: 'Mobile number'),
               kHeight10,
               TextFormFieldWidget(
@@ -58,7 +65,7 @@ class SignUpScreen extends StatelessWidget {
               kHeight20,
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(
+                  Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: ((context) => const OtpScreen()),
                     ),

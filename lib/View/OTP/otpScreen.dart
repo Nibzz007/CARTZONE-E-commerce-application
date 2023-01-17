@@ -21,8 +21,10 @@ class OtpScreen extends StatelessWidget {
                 Container(
                   height: 300,
                   width: 100,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(image: AssetImage('assets/images/5191079.jpeg'))
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage('assets/images/5191079.jpeg'),
+                    ),
                   ),
                 ),
                 kHeight20,
@@ -49,7 +51,13 @@ class OtpScreen extends StatelessWidget {
                 kHeight40,
                 ElevatedButton(
                   onPressed: () {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: ((context) => LogInScreen())));
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => LogInScreen()
+                        ),
+                      ),
+                    );
                   },
                   child: Text('Continue'),
                 )
