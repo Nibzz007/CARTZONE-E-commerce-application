@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  TextFormFieldWidget({Key? key, required this.hintText, required this.icon,  this.obscureText = false})
-      : super(key: key,);
+  const TextFormFieldWidget({
+    super.key,
+    required this.hintText,
+    required this.icon,
+    this.obscureText = false,
+  });
 
-  String hintText;
-  Widget icon;
-  bool obscureText;
+  final String hintText;
+  final Widget icon;
+  final bool obscureText;
 
   @override
   Widget build(BuildContext context) {

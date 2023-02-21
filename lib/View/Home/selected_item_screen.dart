@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/Colours/colours.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Address/saved_address.dart';
-import 'package:second_project/View/Bag/bag.dart';
+import '../../Colours/colours.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Address/saved_address.dart';
+import '../Bag/bag.dart';
 import 'Widgets/selected_item_elevated_button_widget.dart';
 
 class SelectedItemScreen extends StatefulWidget {
@@ -28,7 +28,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
+        actions: <Widget>[
           IconButton(
             onPressed: () {},
             icon: const Icon(
@@ -42,7 +42,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
           padding: const EdgeInsets.all(10),
           child: SafeArea(
             child: Column(
-              children: [
+              children: <Widget>[
                 Container(
                   height: 250,
                   width: double.infinity,
@@ -64,27 +64,26 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 ),
                 kHeight10,
                 Row(
-                  children: [
+                  children: <Widget>[
                     RatingBar.builder(
                       itemSize: 20,
                       minRating: 1,
                       updateOnDrag: true,
-                      itemBuilder: ((context, _) => const Icon(
-                            Icons.star,
-                            color: Colors.amber,
-                          )),
-                      onRatingUpdate: ((rating) => setState(() {
-                            this.rating = rating;
-                          })),
+                      itemBuilder: (BuildContext context, _) => const Icon(
+                        Icons.star,
+                        color: Colors.amber,
+                      ),
+                      onRatingUpdate: (double rating) => setState(() {
+                        this.rating = rating;
+                      }),
                     ),
                     kWidth10,
                     Text('$rating'),
-                    
                   ],
                 ),
                 kHeight5,
                 Row(
-                  children: [
+                  children: <Widget>[
                     Icon(
                       Icons.fire_truck,
                       color: kLightBlue,
@@ -103,7 +102,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                       color: kLightGreeen100),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+                    children: <Widget>[
                       //kWidth50,
                       Text(
                         'Price : ₹1,49,900',
@@ -119,7 +118,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 kHeight5,
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
+                  children: <Widget>[
                     Text(
                       'Highlights',
                       style: priceStyle,
@@ -140,18 +139,30 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 kHeight20,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
+                  children: <Widget>[
                     SelectedItemElevatedButtonWidget(
                       text: 'Add to Cart',
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: ((context) => const BagScreen())));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<StatelessWidget>(
+                            builder: (BuildContext context) =>
+                                const BagScreen(),
+                          ),
+                        );
                       },
                       backColor: Colors.white,
                     ),
                     SelectedItemElevatedButtonWidget(
                       text: 'Buy Now',
                       onPressed: () {
-                        Navigator.push(context, MaterialPageRoute(builder: ((context) => SavedAddress())));
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute<StatelessWidget>(
+                            builder: (BuildContext context) =>
+                                const SavedAddress(),
+                          ),
+                        );
                       },
                       backColor: Colors.yellow,
                     )

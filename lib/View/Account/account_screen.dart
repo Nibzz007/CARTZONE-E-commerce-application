@@ -1,17 +1,13 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Account/my_account_tile.dart';
-import 'package:second_project/View/Account/my_addresses.dart';
-import 'package:second_project/View/Functions/show_dialog_method.dart';
-
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Functions/show_dialog_method.dart';
 import 'Widgets/circle_avatar_widget.dart';
 import 'Widgets/listtile_widget.dart';
+import 'my_account_tile.dart';
+import 'my_addresses.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -30,10 +26,10 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: <Widget>[
                   CircleAvatarWidget(
                     radius: 50,
                     image: FileImage(
@@ -51,19 +47,19 @@ class ProfileScreen extends StatelessWidget {
               ),
               kHeight20,
               ListTileWidget(
-                icon: Icon(Icons.account_circle),
-                title: Text('My Account'),
+                icon: const Icon(Icons.account_circle),
+                title: const Text('My Account'),
                 onPress: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => MyAccountTile()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const MyAccountTile(),
                     ),
                   );
                 },
               ),
               ListTileWidget(
-                icon: Icon(Icons.shop_sharp),
+                icon: const Icon(Icons.shop_sharp),
                 title: Text(
                   'My orders',
                   style: listStyle,
@@ -71,17 +67,22 @@ class ProfileScreen extends StatelessWidget {
                 onPress: () {},
               ),
               ListTileWidget(
-                icon: Icon(Icons.list_alt_rounded),
+                icon: const Icon(Icons.list_alt_rounded),
                 title: Text(
                   'Addresses',
                   style: listStyle,
                 ),
                 onPress: () {
-                  Navigator.push(context, MaterialPageRoute(builder: ((context) => MyAddresses())));
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const MyAddresses(),
+                    ),
+                  );
                 },
               ),
               ListTileWidget(
-                icon: Icon(Icons.share_rounded),
+                icon: const Icon(Icons.share_rounded),
                 title: Text(
                   'Share',
                   style: listStyle,
@@ -89,7 +90,7 @@ class ProfileScreen extends StatelessWidget {
                 onPress: () {},
               ),
               ListTileWidget(
-                icon: Icon(Icons.security_rounded),
+                icon: const Icon(Icons.security_rounded),
                 title: Text(
                   'Privacy policy',
                   style: listStyle,
@@ -97,7 +98,7 @@ class ProfileScreen extends StatelessWidget {
                 onPress: () {},
               ),
               ListTileWidget(
-                icon: Icon(Icons.policy_rounded),
+                icon: const Icon(Icons.policy_rounded),
                 title: Text(
                   'Terms and conditions',
                   style: listStyle,
@@ -105,7 +106,7 @@ class ProfileScreen extends StatelessWidget {
                 onPress: () {},
               ),
               ListTileWidget(
-                icon: Icon(Icons.logout_rounded),
+                icon: const Icon(Icons.logout_rounded),
                 title: Text(
                   'Logout',
                   style: listStyle,
@@ -113,8 +114,8 @@ class ProfileScreen extends StatelessWidget {
                 onPress: () {
                   showDialogMethod(
                     context,
-                    Text('Logout'),
-                    Text('Do you want to logout'),
+                    const Text('Logout'),
+                    const Text('Do you want to logout'),
                   );
                 },
               ),

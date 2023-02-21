@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Colours/colours.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Address/address_form.dart';
-import 'package:second_project/View/Address/successful_screen.dart';
-import 'package:second_project/View/Widgets/elvatedButton_widget.dart';
-import 'package:second_project/View/Widgets/text_button_widget.dart';
+import '../../Colours/colours.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Widgets/elvated_button_widget.dart';
+import '../Widgets/text_button_widget.dart';
+import 'address_form.dart';
+import 'successful_screen.dart';
 
 class SavedAddress extends StatefulWidget {
-  SavedAddress({super.key});
+  const SavedAddress({super.key});
 
   @override
   State<SavedAddress> createState() => _SavedAddressState();
@@ -31,20 +31,20 @@ class _SavedAddressState extends State<SavedAddress> {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget> [
               ListTile(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => AddressForm()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const AddressForm(),
                     ),
                   );
                 },
-                leading: Icon(Icons.add),
-                title: Text('Add new address'),
+                leading: const Icon(Icons.add),
+                title: const Text('Add new address'),
               ),
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               kHeight10,
@@ -59,10 +59,10 @@ class _SavedAddressState extends State<SavedAddress> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget> [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: <Widget> [
                           Text(
                             'Shipping information',
                             style: checkOutHeadStyle,
@@ -71,12 +71,12 @@ class _SavedAddressState extends State<SavedAddress> {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: ((context) => AddressForm()),
+                                MaterialPageRoute<StatelessWidget>(
+                                  builder: (BuildContext context) => const AddressForm(),
                                 ),
                               );
                             },
-                            text: Text('Edit'),
+                            text: const Text('Edit'),
                           ),
                         ],
                       ),
@@ -112,9 +112,9 @@ class _SavedAddressState extends State<SavedAddress> {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget> [
                       Row(
-                        children: [
+                        children: <Widget> [
                           Text(
                             'Payment methods',
                             style: checkOutHeadStyle,
@@ -123,20 +123,20 @@ class _SavedAddressState extends State<SavedAddress> {
                       ),
                       kHeight5,
                       Column(
-                        children: [
+                        children: <Widget> [
                           RadioListTile<int>(
                             value: 0,
                             groupValue: selectedValue,
-                            title: Text('RazorPay'),
-                            onChanged: (value) => setState(() {
+                            title: const Text('RazorPay'),
+                            onChanged: (int? value) => setState(() {
                               selectedValue = 0;
                             }),
                           ),
                           RadioListTile<int>(
                             value: 1,
                             groupValue: selectedValue,
-                            title: Text('Cash on delivery'),
-                            onChanged: (value) => setState(() {
+                            title: const Text('Cash on delivery'),
+                            onChanged: (int? value) => setState(() {
                               selectedValue = 1;
                             }),
                           ),
@@ -149,7 +149,7 @@ class _SavedAddressState extends State<SavedAddress> {
               kHeight80,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
+                children: <Widget> [
                   Text(
                     'Total',
                     style: loginSubStyle,
@@ -165,8 +165,8 @@ class _SavedAddressState extends State<SavedAddress> {
                 onPressed: () {
                   Navigator.pushReplacement(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => SuccessfulScreen()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const SuccessfulScreen(),
                     ),
                   );
                 },

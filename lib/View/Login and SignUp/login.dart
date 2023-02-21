@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/BottomNav/bottomNav.dart';
-import 'package:second_project/View/Widgets/row_text_widget.dart';
-import 'package:second_project/View/Widgets/textFormField_widget.dart';
-import 'package:second_project/View/Login%20and%20SignUp/signUp.dart';
-
-import '../Widgets/elvatedButton_widget.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../BottomNav/bottom_navigation.dart';
+import '../Widgets/elvated_button_widget.dart';
+import '../Widgets/row_text_widget.dart';
+import '../Widgets/text_formField_widget.dart';
+import 'sign_up.dart';
 
 class LogInScreen extends StatelessWidget {
   const LogInScreen({super.key});
@@ -19,10 +18,10 @@ class LogInScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(10),
             child: Column(
-              children: [
+              children: <Widget>[
                 kHeight200,
                 Row(
-                  children: [
+                  children: <Widget>[
                     Text(
                       'Login',
                       style: loginStyle,
@@ -30,27 +29,27 @@ class LogInScreen extends StatelessWidget {
                   ],
                 ),
                 kHeight20,
-                RowTextWidget(text: 'Email'),
+                const RowTextWidget(text: 'Email'),
                 kHeight10,
-                TextFormFieldWidget(
+                const TextFormFieldWidget(
                   hintText: 'Enter your email',
-                  icon: const Icon(Icons.email_outlined),
+                  icon: Icon(Icons.email_outlined),
                 ),
                 kHeight20,
-                RowTextWidget(text: 'Password'),
+                const RowTextWidget(text: 'Password'),
                 kHeight10,
-                TextFormFieldWidget(
+                const TextFormFieldWidget(
                   hintText: 'Enter your password',
                   obscureText: true,
-                  icon: const Icon(Icons.password_outlined),
+                  icon: Icon(Icons.password_outlined),
                 ),
                 kHeight20,
                 ElevatedButtonWidget(
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: ((context) => const BottomNav()),
+                      MaterialPageRoute<StatelessWidget>(
+                        builder: (BuildContext context) => const BottomNav(),
                       ),
                     );
                   },
@@ -66,7 +65,7 @@ class LogInScreen extends StatelessWidget {
                 kHeight40,
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
+                  children: <Widget>[
                     Text(
                       "Don't have an account ?",
                       style: loginDonthaveacnt,
@@ -74,8 +73,9 @@ class LogInScreen extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: ((context) => const SignUpScreen()),
+                          MaterialPageRoute<StatelessWidget>(
+                            builder: (BuildContext context) =>
+                                const SignUpScreen(),
                           ),
                         );
                       },

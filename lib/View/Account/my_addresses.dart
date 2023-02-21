@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import '../../Colours/colours.dart';
-import '../../Constants/Size/sizedBox.dart';
-import '../../Constants/style/textStyle.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
 import '../Address/address_form.dart';
 import '../Widgets/text_button_widget.dart';
 
@@ -25,20 +22,20 @@ class MyAddresses extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget>[
               ListTile(
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => AddressForm()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const AddressForm(),
                     ),
                   );
                 },
-                leading: Icon(Icons.add),
-                title: Text('Add new address'),
+                leading: const Icon(Icons.add),
+                title: const Text('Add new address'),
               ),
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               kHeight10,
@@ -53,10 +50,10 @@ class MyAddresses extends StatelessWidget {
                   padding: const EdgeInsets.all(10),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: <Widget> [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
+                        children: <Widget> [
                           Text(
                             'Shipping information',
                             style: checkOutHeadStyle,
@@ -65,16 +62,16 @@ class MyAddresses extends StatelessWidget {
                             onPressed: () {
                               Navigator.push(
                                 context,
-                                MaterialPageRoute(
-                                  builder: ((context) => AddressForm()),
+                                MaterialPageRoute<StatelessWidget>(
+                                  builder: (BuildContext context) => const AddressForm(),
                                 ),
                               );
                             },
-                            text: Text('Edit'),
+                            text: const Text('Edit'),
                           ),
                           TextButtonWidget(
                             onPressed: () {},
-                            text: Text('Delete'),
+                            text: const Text('Delete'),
                           ),
                         ],
                       ),

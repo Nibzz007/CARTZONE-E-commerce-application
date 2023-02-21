@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/View/Login%20and%20SignUp/login.dart';
+import '../Login%20and%20SignUp/login.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -29,11 +29,11 @@ class _SplashScreenState extends State<SplashScreen> {
     );
   }
 
-  Future<void> goToHome() async {
-    await Future.delayed(const Duration(seconds: 3));
+  Future <void> goToHome() async {
+    await Future <dynamic> .delayed(const Duration(seconds: 3));
     Navigator.of(context).pushReplacement(
-      MaterialPageRoute(
-        builder: ((context) => const LogInScreen()),
+      MaterialPageRoute <StatelessWidget> (
+        builder: (BuildContext context) => const LogInScreen(),
       ),
     );
   }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Bag/bag.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Bag/bag.dart';
 import 'Widgets/category_widget.dart';
 import 'Widgets/row_widget.dart';
 
@@ -13,14 +13,13 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       //backgroundColor: kGrey300,
       appBar: AppBar(
-        leading: null,
-        actions: [
+        actions: <Widget>[
           IconButton(
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: ((context) => const BagScreen()),
+                MaterialPageRoute<StatelessWidget>(
+                  builder: (BuildContext context) => const BagScreen(),
                 ),
               );
             },
@@ -35,7 +34,7 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Column(
-              children: [
+              children: <Widget> [
                 kHeight20,
                 TextFormField(
                   decoration: const InputDecoration(
@@ -50,7 +49,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 kHeight10,
                 Row(
-                  children: [
+                  children: <Widget> [
                     Text('Categories', style: categoryStyle),
                   ],
                 ),
@@ -59,7 +58,7 @@ class HomeScreen extends StatelessWidget {
                   physics: const BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,
                   child: Row(
-                    children: [
+                    children: const <Widget> [
                       CategoryWidget(title: 'Mobiles'),
                       kWidth10,
                       CategoryWidget(title: 'Laptops'),

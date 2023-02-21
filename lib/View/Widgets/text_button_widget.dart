@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class TextButtonWidget extends StatelessWidget {
-  TextButtonWidget({
-    Key? key,
+  const TextButtonWidget({
+    super.key,
     required this.onPressed,
     required this.text,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
-  Widget text;
+  final Widget text;
 
   @override
   Widget build(BuildContext context) {

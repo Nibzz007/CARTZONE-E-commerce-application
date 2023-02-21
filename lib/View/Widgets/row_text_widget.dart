@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import '../../Constants/style/textStyle.dart';
+import '../../Constants/style/text_style.dart';
 
 class RowTextWidget extends StatelessWidget {
-  RowTextWidget({
-    Key? key, required this.text
-  }) : super(key: key);
+  const RowTextWidget({
+    super.key, required this.text
+  });
 
-  String text;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: <Widget> [
         Text(
           text,
           style: loginSubStyle,

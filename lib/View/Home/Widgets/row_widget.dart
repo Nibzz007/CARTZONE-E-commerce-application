@@ -1,23 +1,25 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:second_project/View/Home/selected_item_screen.dart';
-
-import '../../../Constants/Size/sizedBox.dart';
+import '../../../Constants/Size/sized_box.dart';
+import '../selected_item_screen.dart';
 import 'container_widget.dart';
 
 class RowWidget extends StatelessWidget {
   const RowWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
-      children: [
+      children: <Widget>[
         ContainerWidget(
-          onPress: (){
-            Navigator.push(context, MaterialPageRoute(builder: ((context) => SelectedItemScreen())));
+          onPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute <StatelessWidget> (
+                builder: (BuildContext context) => const SelectedItemScreen(),
+              ),
+            );
           },
           image: Image.asset(
             'assets/images/My project (6).png',
@@ -28,8 +30,13 @@ class RowWidget extends StatelessWidget {
         ),
         kWidth10,
         ContainerWidget(
-          onPress: (){
-            Navigator.push(context, MaterialPageRoute(builder: ((context) => SelectedItemScreen())));
+          onPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute <StatelessWidget> (
+                builder: (BuildContext context) => const SelectedItemScreen(),
+              ),
+            );
           },
           image: Image.asset(
             'assets/images/My project (6).png',

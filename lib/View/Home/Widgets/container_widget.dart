@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-
 import '../../../Colours/colours.dart';
+import '../../../Constants/Size/sized_box.dart';
 
 class ContainerWidget extends StatelessWidget {
-  ContainerWidget({Key? key, required this.image, required this.onPress}) : super(key: key);
+  const ContainerWidget({
+    super.key,
+    required this.image,
+    required this.onPress,
+  });
 
-  Widget image;
+  final Widget image;
   final void Function() onPress;
 
   @override
@@ -22,12 +25,12 @@ class ContainerWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(15),
             border: Border.all(color: kBlack38, width: 0.3)),
         child: Column(
-          children: [
-            Stack(children: [
+          children: <Widget>[
+            Stack(children: <Widget>[
               image,
               Positioned(
                 child: Row(
-                  children: [
+                  children: <Widget> [
                     IconButton(
                       onPressed: () {},
                       icon: Icon(

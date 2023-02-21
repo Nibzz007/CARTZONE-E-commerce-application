@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Colours/colours.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Home/selected_item_screen.dart';
+import '../../Colours/colours.dart';
+import '../../Constants/style/text_style.dart';
 import '../Functions/show_dialog_method.dart';
+import '../Home/selected_item_screen.dart';
 
 class WishlistScreen extends StatelessWidget {
   const WishlistScreen({super.key});
@@ -19,16 +19,17 @@ class WishlistScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: ListView.separated(
-          itemBuilder: ((context, index) {
+          itemBuilder: (BuildContext context, int index) {
             return ListTile(
-                onTap: (() {
+                onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => const SelectedItemScreen()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) =>
+                          const SelectedItemScreen(),
                     ),
                   );
-                }),
+                },
                 leading: SizedBox(
                   height: 200,
                   width: 80,
@@ -62,10 +63,10 @@ class WishlistScreen extends StatelessWidget {
                     Icons.delete,
                   ),
                 ));
-          }),
-          separatorBuilder: ((context, index) {
+          },
+          separatorBuilder: (BuildContext context, int index) {
             return const Divider();
-          }),
+          },
           itemCount: 10,
         ),
       ),

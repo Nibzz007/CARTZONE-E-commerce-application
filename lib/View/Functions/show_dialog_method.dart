@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-
 import '../../Colours/colours.dart';
+import '../../Constants/style/text_style.dart';
 import '../Widgets/text_button_widget.dart';
 
-Future<dynamic> showDialogMethod(BuildContext context, Widget title, Widget content) {
+Future<dynamic> showDialogMethod(
+  BuildContext context,
+  Widget title,
+  Widget content,
+) {
   return showDialog(
     context: context,
-    builder: (context) {
+    builder: (BuildContext context) {
       return AlertDialog(
         backgroundColor: kLightBlue,
         shape: RoundedRectangleBorder(
@@ -15,7 +18,7 @@ Future<dynamic> showDialogMethod(BuildContext context, Widget title, Widget cont
         ),
         title: title,
         content: content,
-        actions: [
+        actions: <Widget>[
           TextButtonWidget(
             onPressed: () {
               Navigator.pop(context);

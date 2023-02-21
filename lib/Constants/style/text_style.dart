@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/Colours/colours.dart';
+import '../../Colours/colours.dart';
 
 //Login screen
 
@@ -108,8 +108,3 @@ TextStyle priceStyle = GoogleFonts.montserrat(
   fontWeight: FontWeight.w500,
   color: kBlack
 );
-
-
-
-
-

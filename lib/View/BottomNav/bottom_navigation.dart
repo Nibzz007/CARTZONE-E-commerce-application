@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/View/Bag/bag.dart';
-import 'package:second_project/View/Home/home_screen.dart';
-import 'package:second_project/View/Account/account_screen.dart';
-import 'package:second_project/View/Wishlist/wishlistScreen.dart';
+import '../Account/account_screen.dart';
+import '../Bag/bag.dart';
+import '../Home/home_screen.dart';
+import '../Wishlist/wishlist_screen.dart';
 
 class BottomNav extends StatefulWidget {
   const BottomNav({super.key});
@@ -14,7 +14,7 @@ class BottomNav extends StatefulWidget {
 class _BottomNavState extends State<BottomNav> {
   int currentSelectIndex = 0;
 
-  List screens = [
+  List <StatelessWidget> screens = <StatelessWidget> [
     const HomeScreen(),
     const BagScreen(),
     const WishlistScreen(),
@@ -29,12 +29,12 @@ class _BottomNavState extends State<BottomNav> {
         selectedItemColor: Colors.lightBlue,
         unselectedItemColor: Colors.grey,
         currentIndex: currentSelectIndex,
-        onTap: (newIndex) {
+        onTap: (int newIndex) {
           setState(() {
             currentSelectIndex = newIndex;
           });
         },
-        items: const [
+        items: const <BottomNavigationBarItem> [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             label: 'Home',

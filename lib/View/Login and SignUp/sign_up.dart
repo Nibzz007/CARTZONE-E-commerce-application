@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/OTP/otpScreen.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../OTP/otp_screen.dart';
 
 import '../Widgets/row_text_widget.dart';
-import '../Widgets/textFormField_widget.dart';
+import '../Widgets/text_formField_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
   const SignUpScreen({super.key});
@@ -16,10 +16,10 @@ class SignUpScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget>[
               kHeight40,
               Row(
-                children: [
+                children: <Widget>[
                   kHeight40,
                   Text(
                     'Create a new account',
@@ -28,46 +28,46 @@ class SignUpScreen extends StatelessWidget {
                 ],
               ),
               kHeight20,
-              RowTextWidget(text: 'Name'),
+              const RowTextWidget(text: 'Name'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your name',
-                icon: const Icon(Icons.person),
+                icon: Icon(Icons.person),
               ),
               kHeight20,
-              RowTextWidget(text: 'Email'),
+              const RowTextWidget(text: 'Email'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your email',
-                icon: const Icon(Icons.email_outlined),
+                icon: Icon(Icons.email_outlined),
               ),
               kHeight20,
-              RowTextWidget(text: 'Password'),
+              const RowTextWidget(text: 'Password'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your password',
-                icon: const Icon(Icons.password_outlined),
+                icon: Icon(Icons.password_outlined),
               ),
               kHeight20,
-              RowTextWidget(text: 'Confirm Password'),
+              const RowTextWidget(text: 'Confirm Password'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Confirm password',
                 icon: Icon(Icons.password_outlined),
               ),
               kHeight20,
-              RowTextWidget(text: 'Mobile number'),
+              const RowTextWidget(text: 'Mobile number'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your mobile number',
-                icon: const Icon(Icons.mobile_friendly_outlined),
+                icon: Icon(Icons.mobile_friendly_outlined),
               ),
               kHeight20,
               ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
-                    MaterialPageRoute(
-                      builder: ((context) => const OtpScreen()),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const OtpScreen(),
                     ),
                   );
                 },

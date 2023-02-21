@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
+import '../../Constants/style/text_style.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
-  ElevatedButtonWidget({
-    Key? key,
+ const ElevatedButtonWidget({
+    super.key,
     required this.onPressed,
     required this.text,
-  }) : super(key: key);
+  });
 
   final void Function() onPressed;
-  String text;
+  final String text;
 
   @override
   Widget build(BuildContext context) {

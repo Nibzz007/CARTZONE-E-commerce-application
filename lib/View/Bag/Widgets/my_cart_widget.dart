@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../Colours/colours.dart';
-import '../../../Constants/Size/sizedBox.dart';
+import '../../../Constants/Size/sized_box.dart';
 
 class MyCartWidget extends StatelessWidget {
   const MyCartWidget({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyCartWidget extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(width: 0.2)),
       child: Row(
-        children: [
+        children: <Widget>[
           Padding(
             padding: const EdgeInsets.all(10),
             child: Container(
@@ -36,7 +36,7 @@ class MyCartWidget extends StatelessWidget {
             padding: const EdgeInsets.fromLTRB(0, 20, 10, 0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
+              children: <Widget>[
                 Text(
                   "Macbook Air M2\n512 Gb, 8Gb RAM, 13.3''",
                   style: GoogleFonts.montserrat(
@@ -50,15 +50,16 @@ class MyCartWidget extends StatelessWidget {
                 ),
                 kHeight10,
                 Row(
-                  children: [
-                    Text('Quantity'),
+                  children: <Widget>[
+                    const Text('Quantity'),
                     kWidth10,
                     Container(
                       height: 20,
                       width: 20,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 1),
-                          color: kLightBlue),
+                        border: Border.all(),
+                        color: kLightBlue,
+                      ),
                       child: Center(
                         child: Text(
                           '-',
@@ -71,14 +72,15 @@ class MyCartWidget extends StatelessWidget {
                       ),
                     ),
                     kWidth10,
-                    Text('1'),
+                    const Text('1'),
                     kWidth10,
                     Container(
                       height: 20,
                       width: 20,
                       decoration: BoxDecoration(
-                          border: Border.all(width: 1),
-                          color: kLightBlue),
+                        border: Border.all(),
+                        color: kLightBlue,
+                      ),
                       child: Center(
                         child: Text(
                           '+',

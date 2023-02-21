@@ -1,9 +1,9 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:second_project/Colours/colours.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Account/Widgets/circle_avatar_widget.dart';
+import '../../Colours/colours.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import 'Widgets/circle_avatar_widget.dart';
 import 'Widgets/my_account_widget.dart';
 
 class MyAccountTile extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyAccountTile extends StatelessWidget {
           style: appBarTitleStyle,
         ),
         centerTitle: true,
-        actions: [
+        actions: <Widget> [
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.edit),
@@ -30,12 +30,12 @@ class MyAccountTile extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget> [
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
+                children: <Widget> [
                   Stack(
-                    children: [
+                    children: <Widget> [
                       CircleAvatarWidget(
                         radius: 50,
                         image: FileImage(

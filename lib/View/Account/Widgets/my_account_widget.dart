@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 import '../../../Colours/colours.dart';
-import '../../../Constants/style/textStyle.dart';
+import '../../../Constants/style/text_style.dart';
 
 class MyAccountWidget extends StatelessWidget {
-  MyAccountWidget({
-    Key? key,
+  const MyAccountWidget({
+    super.key,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
-  String text;
+  final String text;
   final void Function() onPressed;
 
   @override
@@ -23,10 +23,10 @@ class MyAccountWidget extends StatelessWidget {
         border: Border.all(color: kBlack38),
       ),
       child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: <Widget> [
             Text(
               text,
               style: listStyle,

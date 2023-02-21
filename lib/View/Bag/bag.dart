@@ -1,13 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/Colours/colours.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Address/saved_address.dart';
-import 'package:second_project/View/Widgets/elvatedButton_widget.dart';
-import 'package:second_project/View/Widgets/text_button_widget.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Address/saved_address.dart';
+import '../Widgets/elvated_button_widget.dart';
 
 import 'Widgets/my_cart_widget.dart';
 
@@ -28,17 +23,17 @@ class BagScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
-              MyCartWidget(),
+            children: <Widget>[
+              const MyCartWidget(),
               kHeight10,
-              MyCartWidget(),
+              const MyCartWidget(),
               kHeight20,
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               kHeight10,
               Row(
-                children: [
+                children: <Widget>[
                   Text(
                     'Price details',
                     style: myCartSubtitileStyle,
@@ -48,7 +43,7 @@ class BagScreen extends StatelessWidget {
               kHeight10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: const <Widget>[
                   Text('Price'),
                   Text('₹1,40,000'),
                 ],
@@ -56,25 +51,30 @@ class BagScreen extends StatelessWidget {
               kHeight10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [Text('Delivery charge'), Text('₹40')],
+                children: const <Widget>[
+                  Text('Delivery charge'),
+                  Text('₹40'),
+                ],
               ),
               kHeight10,
-              Divider(
+              const Divider(
                 thickness: 2,
               ),
               kHeight10,
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [Text('Total amount'), Text('₹1,40,040')],
+                children: const <Widget> [
+                  Text('Total amount'),
+                  Text('₹1,40,040'),
+                ],
               ),
               kHeight40,
               ElevatedButtonWidget(
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(
-                      builder: ((context) => SavedAddress()
-                      ),
+                    MaterialPageRoute<StatelessWidget>(
+                      builder: (BuildContext context) => const SavedAddress(),
                     ),
                   );
                 },

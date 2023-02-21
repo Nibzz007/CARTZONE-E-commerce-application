@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CircleAvatarWidget extends StatelessWidget {
-  CircleAvatarWidget({
-    Key? key,
+  const CircleAvatarWidget({
+    super.key,
     required this.radius,
     required this.image,
-  }) : super(key: key);
+  });
 
-  double radius;
-  ImageProvider image;
+  final double radius;
+  final ImageProvider image;
 
   @override
   Widget build(BuildContext context) {

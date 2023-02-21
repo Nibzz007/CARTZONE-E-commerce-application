@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
+import '../../../Constants/style/text_style.dart';
 
 class SelectedItemElevatedButtonWidget extends StatelessWidget {
-  SelectedItemElevatedButtonWidget({
-    Key? key,
+ const SelectedItemElevatedButtonWidget({
+    super.key,
     required this.text,
     required this.onPressed,
     required this.backColor,
-  }) : super(key: key);
+  });
 
-  String text;
+  final String text;
   final void Function() onPressed;
-  Color backColor;
+  final Color backColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(

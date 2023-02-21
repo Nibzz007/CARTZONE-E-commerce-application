@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Widgets/elvatedButton_widget.dart';
-import 'package:second_project/View/Widgets/row_text_widget.dart';
-import 'package:second_project/View/Widgets/textFormField_widget.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Widgets/elvated_button_widget.dart';
+import '../Widgets/row_text_widget.dart';
+import '../Widgets/text_formField_widget.dart';
 
 class AddressForm extends StatelessWidget {
   const AddressForm({super.key});
@@ -24,39 +22,39 @@ class AddressForm extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: [
+            children: <Widget> [
               kHeight20,
-              RowTextWidget(text: 'Full name'),
+              const RowTextWidget(text: 'Full name'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your full name',
                 icon: Icon(Icons.person),
               ),
               kHeight20,
-              RowTextWidget(text: 'Place'),
+              const RowTextWidget(text: 'Place'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your place',
                 icon: Icon(Icons.place),
               ),
               kHeight20,
-              RowTextWidget(text: 'Phone number'),
+              const RowTextWidget(text: 'Phone number'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your phone number',
                 icon: Icon(Icons.phone_android),
               ),
               kHeight20,
-              RowTextWidget(text: 'State'),
+              const RowTextWidget(text: 'State'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your state',
                 icon: Icon(Icons.place_outlined),
               ),
               kHeight20,
-              RowTextWidget(text: 'Pincode'),
+              const RowTextWidget(text: 'Pincode'),
               kHeight10,
-              TextFormFieldWidget(
+              const TextFormFieldWidget(
                 hintText: 'Enter your pincode',
                 icon: Icon(Icons.pin),
               ),

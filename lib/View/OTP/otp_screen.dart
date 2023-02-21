@@ -1,10 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import 'package:second_project/Constants/Size/sizedBox.dart';
-import 'package:second_project/Constants/style/textStyle.dart';
-import 'package:second_project/View/Login%20and%20SignUp/login.dart';
+import '../../Constants/Size/sized_box.dart';
+import '../../Constants/style/text_style.dart';
+import '../Login%20and%20SignUp/login.dart';
 
 class OtpScreen extends StatelessWidget {
   const OtpScreen({super.key});
@@ -17,7 +15,7 @@ class OtpScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: SafeArea(
             child: Column(
-              children: [
+              children: <Widget> [
                 Container(
                   height: 300,
                   width: 100,
@@ -29,7 +27,7 @@ class OtpScreen extends StatelessWidget {
                 ),
                 kHeight20,
                 Row(
-                  children: [
+                  children: <Widget> [
                     Text(
                       'Enter OTP',
                       style: signupStyle,
@@ -45,7 +43,7 @@ class OtpScreen extends StatelessWidget {
                   ),
                 ),
                 kHeight40,
-                Pinput(
+                const Pinput(
                   length: 6,
                 ),
                 kHeight40,
@@ -53,13 +51,13 @@ class OtpScreen extends StatelessWidget {
                   onPressed: () {
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(
-                        builder: ((context) => LogInScreen()
-                        ),
+                      MaterialPageRoute <StatelessWidget> (
+                        builder: (BuildContext context) => const LogInScreen()
+                        ,
                       ),
                     );
                   },
-                  child: Text('Continue'),
+                  child: const Text('Continue'),
                 )
               ],
             ),
