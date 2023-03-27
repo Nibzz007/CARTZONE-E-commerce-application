@@ -19,9 +19,14 @@ class FirebaseAuthMethods {
     try {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((UserCredential value) => Navigator.of(context).pushAndRemoveUntil(
-              MaterialPageRoute(builder: ((BuildContext context) => LogInScreen())),
-              (Route route) => false));
+          .then(
+            (UserCredential value) => Navigator.of(context).pushAndRemoveUntil(
+              MaterialPageRoute<dynamic>(
+                builder: (BuildContext context) => const LogInScreen()
+              ),
+              (Route<dynamic> route) => false,
+            ),
+          );
     } on FirebaseAuthException catch (e) {
       showSnackBar(context, e.message!);
     }

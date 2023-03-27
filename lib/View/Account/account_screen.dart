@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatarWidget(
                     radius: 50,
-                    image:  
+                    image: 
                     Image.asset(
                       'assets/images/image_processing20200226-9101-ukr3oz.jpg',
                     ).image,
@@ -44,6 +44,7 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
               kHeight20,
+              
               Text(
                 'nibu',
                 //user.displayName!,

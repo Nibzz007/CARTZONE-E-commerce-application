@@ -9,6 +9,7 @@ import '../../Constants/Size/sized_box.dart';
 import '../../Constants/style/text_style.dart';
 import '../../Model/google_sign_in.dart';
 import '../../main.dart';
+import '../../utils/show_snack_bar.dart';
 import '../BottomNav/bottom_navigation.dart';
 import '../Widgets/elvated_button_widget.dart';
 import '../Widgets/row_text_widget.dart';
@@ -137,16 +138,19 @@ class _LogInScreenState extends State<LogInScreen> {
                           ),
                           onPressed: () {
                             final GoogleSignInProvider provider =
-                                Provider.of<GoogleSignInProvider>(context,
-                                    listen: false);
+                                Provider.of<GoogleSignInProvider>(
+                              context,
+                              listen: false,
+                            );
                             provider.googleLogIn();
                           },
                           label: Text(
                             'Sign in With Google',
                             style: TextStyle(
-                                color: kBlack,
-                                fontSize: 19,
-                                fontWeight: FontWeight.w600),
+                              color: kBlack,
+                              fontSize: 19,
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
                         kHeight40,
@@ -197,15 +201,8 @@ class _LogInScreenState extends State<LogInScreen> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      print(e);
+      showSnackBar(context, 'E-mail or Password is incorrect');
     }
-
-    // Navigator.pushReplacement(
-    //   context,
-    //   MaterialPageRoute<StatelessWidget>(
-    //     builder: (BuildContext context) => const BottomNav(),
-    //   ),
-    // );
     navigatorKey.currentState!
         .popUntil((Route<dynamic> route) => route.isFirst);
     //used to hide the showdialog after signing into firebase

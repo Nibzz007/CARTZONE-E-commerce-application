@@ -64,14 +64,14 @@ class MyAccountTile extends StatelessWidget {
                 ],
               ),
               kHeight20,
-              MyAccountWidget(
-                text: 'nibu'
+              const MyAccountWidget(
+                text: 'Nibu'
                 //user.displayName!,
                 // onPressed: () {},
               ),
               kHeight10,
               MyAccountWidget(
-                text: 'nibukrishna07@gmail.com'
+                text: user.email!
                 //user.email!,
                 // onPressed: () {},
               )
