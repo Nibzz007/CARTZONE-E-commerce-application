@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../Constants/Size/sized_box.dart';
@@ -14,6 +14,9 @@ class ProfileScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = FirebaseAuth.instance
+        .currentUser!; // Now we can access the information of the loggedin user
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -32,17 +35,18 @@ class ProfileScreen extends StatelessWidget {
                 children: <Widget>[
                   CircleAvatarWidget(
                     radius: 50,
-                    image: FileImage(
-                      File(
-                        'assets/images/image_processing20200226-9101-ukr3oz.jpg',
-                      ),
-                    ),
+                    image:  
+                    Image.asset(
+                      'assets/images/image_processing20200226-9101-ukr3oz.jpg',
+                    ).image,
+                    // NetworkImage(user.photoURL!),// It will access the photo url of the user
                   ),
                 ],
               ),
               kHeight20,
               Text(
-                'Nibu Krishna M V',
+                'nibu',
+                //user.displayName!,
                 style: nameStyle,
               ),
               kHeight20,

@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import '../../Colours/colours.dart';
 import '../../Constants/Size/sized_box.dart';
@@ -11,6 +11,8 @@ class MyAccountTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final User user = FirebaseAuth.instance.currentUser!;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -18,7 +20,7 @@ class MyAccountTile extends StatelessWidget {
           style: appBarTitleStyle,
         ),
         centerTitle: true,
-        actions: <Widget> [
+        actions: <Widget>[
           IconButton(
             onPressed: () {},
             icon: const Icon(Icons.edit),
@@ -30,19 +32,18 @@ class MyAccountTile extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: <Widget> [
+            children: <Widget>[
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget> [
+                children: <Widget>[
                   Stack(
-                    children: <Widget> [
+                    children: <Widget>[
                       CircleAvatarWidget(
                         radius: 50,
-                        image: FileImage(
-                          File(
-                            'assets/images/image_processing20200226-9101-ukr3oz.jpg',
-                          ),
-                        ),
+                        image: Image.asset(
+                                'assets/images/image_processing20200226-9101-ukr3oz.jpg')
+                            .image,
+                        //NetworkImage(user.photoURL!),
                       ),
                       Positioned(
                         bottom: 2,
@@ -64,18 +65,15 @@ class MyAccountTile extends StatelessWidget {
               ),
               kHeight20,
               MyAccountWidget(
-                text: 'Nibu Krishna M V',
-                onPressed: () {},
+                text: 'nibu'
+                //user.displayName!,
+                // onPressed: () {},
               ),
               kHeight10,
               MyAccountWidget(
-                text: '7907360016',
-                onPressed: () {},
-              ),
-              kHeight10,
-              MyAccountWidget(
-                text: 'nibukrishna07@gmail.com',
-                onPressed: () {},
+                text: 'nibukrishna07@gmail.com'
+                //user.email!,
+                // onPressed: () {},
               )
             ],
           ),

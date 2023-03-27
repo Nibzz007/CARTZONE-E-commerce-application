@@ -30,6 +30,7 @@ class SuccessfulScreen extends StatelessWidget {
                 ),
                 kHeight40,
                 ElevatedButtonWidget(
+                  color: kBlack,
                     onPressed: () {
                       Navigator.pushAndRemoveUntil(
                         context,

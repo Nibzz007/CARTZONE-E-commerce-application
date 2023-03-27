@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../Colours/colours.dart';
 import '../../Constants/Size/sized_box.dart';
 import '../../Constants/style/text_style.dart';
 import '../Address/saved_address.dart';
@@ -70,6 +71,7 @@ class BagScreen extends StatelessWidget {
               ),
               kHeight40,
               ElevatedButtonWidget(
+                color: kBlack,
                 onPressed: () {
                   Navigator.push(
                     context,

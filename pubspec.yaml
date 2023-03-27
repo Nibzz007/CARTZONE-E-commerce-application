@@ -30,12 +30,20 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   carousel_slider: ^4.2.1
+  cloud_firestore: ^4.4.5
   cupertino_icons: ^1.0.2
+  email_validator: ^2.1.17
+  firebase_auth: ^4.3.0
+  firebase_core: ^2.8.0
   flutter:
     sdk: flutter
   flutter_rating_bar: ^4.0.1
+  font_awesome_flutter: ^10.4.0
   google_fonts: ^3.0.1
+  google_sign_in: ^6.0.2
+  lottie: ^2.3.0
   pinput: ^2.2.21
+  provider: ^6.0.5
 
 dev_dependencies:
   flutter_lints: ^2.0.0
@@ -54,14 +62,8 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/images/macbook-air-midnight-select-20220606.jpeg
-    - assets/images/macbook-air-og-202206.jpeg
-    - assets/images/ef824ee86efb3ec6cc6eb6758cd5e70c.jpg
-    - assets/images/download.jpeg
-    - assets/images/5191079.jpeg
-    - assets/images/image_processing20200226-9101-ukr3oz.jpg
-    - assets/images/download (1).jpeg
-    - assets/images/My project (6).png
+    - assets/images/
+    - assets/lottie/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
   # For details regarding adding assets from package dependencies, see

@@ -31,6 +31,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   Future <void> goToHome() async {
     await Future <dynamic> .delayed(const Duration(seconds: 3));
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pushReplacement(
       MaterialPageRoute <StatelessWidget> (
         builder: (BuildContext context) => const LogInScreen(),
