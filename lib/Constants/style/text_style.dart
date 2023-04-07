@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Colours/colours.dart';
+import '../../colours/colours.dart';
 
 //Login screen
 
@@ -41,7 +41,7 @@ TextStyle signupStyle = GoogleFonts.montserrat(
 
 TextStyle categoryStyle = GoogleFonts.montserrat(
   fontSize: 20,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w700,
 );
 
 
@@ -105,6 +105,7 @@ TextStyle checkOutAddressStyle = GoogleFonts.montserrat(
 
 TextStyle priceStyle = GoogleFonts.montserrat(
   fontSize: 16,
-  fontWeight: FontWeight.w500,
-  color: kBlack
+  fontWeight: FontWeight.w700,
+  color: kBlack,
+  wordSpacing: 2
 );

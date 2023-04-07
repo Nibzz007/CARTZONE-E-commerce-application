@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/style/text_style.dart';
+import 'package:second_project/model/product_model.dart';
+import '../../colours/colours.dart';
+import '../../constants/style/text_style.dart';
 import '../Functions/show_dialog_method.dart';
 import '../Home/selected_item_screen.dart';
 
 class WishlistScreen extends StatelessWidget {
-  const WishlistScreen({super.key});
+  WishlistScreen({super.key, });
+
+  
 
   @override
   Widget build(BuildContext context) {
@@ -22,13 +25,13 @@ class WishlistScreen extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
                 onTap: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<StatelessWidget>(
-                      builder: (BuildContext context) =>
-                          const SelectedItemScreen(),
-                    ),
-                  );
+                  // Navigator.push(
+                  //   context,
+                  //   MaterialPageRoute<StatelessWidget>(
+                  //     builder: (BuildContext context) =>
+                  //         SelectedItemScreen(product: product,),
+                  //   ),
+                  // );
                 },
                 leading: SizedBox(
                   height: 200,

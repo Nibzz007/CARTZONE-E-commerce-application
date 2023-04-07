@@ -2,9 +2,10 @@ import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
-import '../../Model/firebase_auth_methods.dart';
+import 'package:second_project/view/Login%20and%20SignUp/user_details.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
+import '../../model/firebase_auth_methods.dart';
 import '../Widgets/row_text_widget.dart';
 import '../Widgets/text_form_field_widget.dart';
 
@@ -21,16 +22,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
       TextEditingController();
   final TextEditingController signUpConfirmPasswordController =
       TextEditingController();
-  // final TextEditingController nameController = TextEditingController();
-  // final TextEditingController phoneNumberController = TextEditingController();
-
-  Future<void> signUpUser() async {
-    FirebaseAuthMethods(FirebaseAuth.instance).signUpWithEmail(
-      email: signUpEmailController.text,
-      password: signUpPasswordController.text,
-      context: context,
-    );
-  }
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
@@ -64,13 +55,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ],
                   ),
-                  kHeight10,
-                  // const RowTextWidget(text: 'Name'),
-                  // kHeight10,
-                  // TextFormFieldWidget(
-                  //   hintText: 'Enter your name',
-                  //   icon: const Icon(Icons.person), text: nameController,
-                  // ),
                   kHeight20,
                   const RowTextWidget(text: 'Email'),
                   kHeight10,
@@ -132,7 +116,17 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       if (!formKey.currentState!.validate()) {
                         return;
                       }
-                      signUpUser();
+                      //signUpUser();
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => UserDetailsScreen(
+                            email: signUpEmailController.text.trim().toLowerCase(),
+                            password: signUpPasswordController.text.trim(),
+                          )
+                          ),
+                        ),
+                      );
                     },
                     //onPressed: signUpUser,
                     // () {

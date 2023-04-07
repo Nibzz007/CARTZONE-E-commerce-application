@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/style/text_style.dart';
-import '../../Model/google_sign_in.dart';
+import '../../colours/colours.dart';
+import '../../constants/style/text_style.dart';
+import '../../model/google_sign_in.dart';
 import '../Widgets/text_button_widget.dart';
 
 Future<dynamic> showDialogMethod(

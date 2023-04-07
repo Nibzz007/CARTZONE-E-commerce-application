@@ -1,29 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import 'package:second_project/model/product_model.dart';
+import '../../colours/colours.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import '../Address/saved_address.dart';
 import '../Bag/bag.dart';
 import 'Widgets/selected_item_elevated_button_widget.dart';
 
 class SelectedItemScreen extends StatefulWidget {
-  const SelectedItemScreen({super.key});
+  SelectedItemScreen({
+    super.key,
+    required this.product,
+  });
+
+  Product product;
 
   @override
   State<SelectedItemScreen> createState() => _SelectedItemScreenState();
 }
 
 class _SelectedItemScreenState extends State<SelectedItemScreen> {
-  // final assetImages = [
-  //   'assets/images/download (1).jpeg'
-  //   'assets/images/macbook-air-og-202206.jpeg'
-  //   'assets/images/macbook-air-midnight-select-20220606.jpeg',
-  // ];
-
   double rating = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,18 +46,21 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                   height: 250,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    //color: kGrey300,
+                    image: DecorationImage(
+                      image: NetworkImage(
+                        widget.product.images[0],
+                      ),
+                    ),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(width: 0.4, color: kBlack38),
-                  ),
-                  child: Image.asset(
-                    'assets/images/macbook-air-midnight-select-20220606.jpeg',
-                    fit: BoxFit.cover,
+                    border: Border.all(
+                      width: 0.8,
+                      color: kBlack38,
+                    ),
                   ),
                 ),
                 kHeight20,
                 Text(
-                  'Apple 2022 MacBook AIR M2 - (8 GB/256 GB SSD/Mac Os Monterery, 13.6 inch, 1.24 Kg)',
+                  widget.product.productName,
                   style: GoogleFonts.montserrat(
                       fontSize: 15, fontWeight: FontWeight.w600),
                 ),
@@ -97,15 +99,16 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                   width: double.infinity,
                   height: 50,
                   decoration: BoxDecoration(
-                      border: Border.all(width: 0.5, color: kBlack38),
-                      borderRadius: BorderRadius.circular(5),
-                      color: kLightGreeen100),
+                    border: Border.all(width: 0.5, color: kBlack38),
+                    borderRadius: BorderRadius.circular(5),
+                    color: kLightGreeen100,
+                  ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       //kWidth50,
                       Text(
-                        'Price : ₹1,49,900',
+                        widget.product.price,
                         style: priceStyle,
                       )
                     ],
@@ -124,12 +127,10 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                       style: priceStyle,
                     ),
                     kHeight10,
-                    const Text('* Stylish & Portable Thin and Light Laptop'),
-                    kHeight5,
-                    const Text(
-                        '* 13.6 inch Liquid Retina Display, LED-backlit display with IPS technology, 500 nits brightness, WIde colour()P3, True Tone technology'),
-                    kHeight5,
-                    const Text('* Light Laptop without Optical Disk Drive')
+                    Text(
+                      widget.product.description,
+                      style: TextStyle(height: 2, fontWeight: FontWeight.w500),
+                    ),
                   ],
                 ),
                 kHeight5,

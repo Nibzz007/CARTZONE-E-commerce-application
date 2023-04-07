@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import '../../colours/colours.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import '../BottomNav/bottom_navigation.dart';
 import '../Widgets/elvated_button_widget.dart';
 

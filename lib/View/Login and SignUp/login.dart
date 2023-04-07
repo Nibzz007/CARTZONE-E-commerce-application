@@ -4,10 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
-import '../../Model/google_sign_in.dart';
+import 'package:second_project/view/BottomNav/persistent_nav_bar.dart';
+import '../../colours/colours.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
+import '../../model/google_sign_in.dart';
 import '../../main.dart';
 import '../../utils/show_snack_bar.dart';
 import '../BottomNav/bottom_navigation.dart';
@@ -50,7 +51,7 @@ class _LogInScreenState extends State<LogInScreen> {
               child: Text('Something went wrong..Please try again'),
             );
           } else if (snapshot.hasData) {
-            return const BottomNav();
+            return const BottomNavBarPersistent();
           } else {
             return SafeArea(
               child: SingleChildScrollView(
@@ -122,11 +123,6 @@ class _LogInScreenState extends State<LogInScreen> {
                         kHeight10,
                         const Text('Or'),
                         kHeight10,
-                        // ElevatedButtonWidget(
-                        //   color: kWhite,
-                        //   onPressed: () {},
-                        //   text: 'Continue with Google',
-                        // ),
                         ElevatedButton.icon(
                           style: ElevatedButton.styleFrom(
                             fixedSize: const Size(250, 40),
@@ -173,7 +169,7 @@ class _LogInScreenState extends State<LogInScreen> {
                               child: const Text(
                                 'Create a new account',
                               ),
-                            )
+                            ),
                           ],
                         )
                       ],

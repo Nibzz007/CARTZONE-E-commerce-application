@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import '../../colours/colours.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import '../Address/address_form.dart';
 import '../Widgets/text_button_widget.dart';
 
@@ -47,7 +47,7 @@ class MyAddresses extends StatelessWidget {
                     border: Border.all(width: 0.5, color: kBlack38),
                     borderRadius: BorderRadius.circular(10)),
                 child: Padding(
-                  padding: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(5),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget> [

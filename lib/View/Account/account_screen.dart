@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import 'package:second_project/model/user_model.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import '../Functions/show_dialog_method.dart';
 import 'Widgets/circle_avatar_widget.dart';
 import 'Widgets/listtile_widget.dart';
@@ -10,12 +11,14 @@ import 'my_account_tile.dart';
 import 'my_addresses.dart';
 
 class ProfileScreen extends StatelessWidget {
-  const ProfileScreen({super.key});
+  ProfileScreen({super.key});
+
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
-    final User user = FirebaseAuth.instance
-        .currentUser!; // Now we can access the information of the loggedin user
+    // final User user = FirebaseAuth.instance
+    //     .currentUser!; // Now we can access the information of the loggedin user
 
     return Scaffold(
       appBar: AppBar(
@@ -29,39 +32,49 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  CircleAvatarWidget(
-                    radius: 50,
-                    image: 
-                    Image.asset(
-                      'assets/images/image_processing20200226-9101-ukr3oz.jpg',
-                    ).image,
-                    // NetworkImage(user.photoURL!),// It will access the photo url of the user
-                  ),
-                ],
-              ),
-              kHeight20,
-              
-              Text(
-                'nibu',
-                //user.displayName!,
-                style: nameStyle,
-              ),
-              kHeight20,
-              ListTileWidget(
-                icon: const Icon(Icons.account_circle),
-                title: const Text('My Account'),
-                onPress: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute<StatelessWidget>(
-                      builder: (BuildContext context) => const MyAccountTile(),
-                    ),
-                  );
-                },
+            children:[
+              FutureBuilder<UserModel>(
+                future: UserModel.getCurrentUserData(email: userEmail!),
+                builder: ((context, snapshot) {
+                  if (snapshot.hasError) {
+                    return Center(
+                      child: Text('Something went wrong'),
+                    );
+                  } else if (snapshot.hasData) {
+                    final user = snapshot.data!;
+                    return Column(
+                      children: [
+                        CircleAvatarWidget(
+                          radius: 60,
+                          image: NetworkImage(user.image),
+                          // NetworkImage(user.photoURL!),// It will access the photo url of the user
+                        ),
+                        kHeight20,
+                        Text(
+                          user.firstName + ' ' + user.lastName,
+                          style: nameStyle,
+                        ),
+                        kHeight20,
+                        ListTileWidget(
+                          icon: const Icon(Icons.account_circle),
+                          title: const Text('My Account'),
+                          onPress: () async {
+                            final user = await UserModel.getCurrentUserData(email: userEmail!);
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute<StatelessWidget>(
+                                builder: (BuildContext context) =>
+                                    MyAccountTile(user: user),
+                              ),
+                            );
+                          },
+                        ),
+                      ],
+                    );
+                  } else {
+                    return CircularProgressIndicator();
+                  }
+                }),
               ),
               ListTileWidget(
                 icon: const Icon(Icons.shop_sharp),

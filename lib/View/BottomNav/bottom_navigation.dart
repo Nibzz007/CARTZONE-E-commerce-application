@@ -17,8 +17,8 @@ class _BottomNavState extends State<BottomNav> {
   List <StatelessWidget> screens = <StatelessWidget> [
     const HomeScreen(),
     const BagScreen(),
-    const WishlistScreen(),
-    const ProfileScreen()
+    WishlistScreen(),
+    ProfileScreen()
   ];
   @override
   Widget build(BuildContext context) {

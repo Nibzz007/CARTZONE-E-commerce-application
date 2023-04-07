@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../Colours/colours.dart';
-import '../../../Constants/style/text_style.dart';
+import '../../../colours/colours.dart';
+import '../../../constants/style/text_style.dart';
 
 class MyAccountWidget extends StatelessWidget {
   const MyAccountWidget({
@@ -19,14 +19,17 @@ class MyAccountWidget extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(5),
-        border: Border.all(color: kBlack38),
+        color: Color.fromARGB(128, 131, 136, 91),
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(
+          color: kBlack38,
+        ),
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget> [
+          children: <Widget>[
             Text(
               text,
               style: listStyle,

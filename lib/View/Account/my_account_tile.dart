@@ -1,18 +1,30 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../../Colours/colours.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import 'package:second_project/model/user_model.dart';
+import 'package:second_project/view/Account/edit_profile_screen.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import 'Widgets/circle_avatar_widget.dart';
 import 'Widgets/my_account_widget.dart';
 
-class MyAccountTile extends StatelessWidget {
-  const MyAccountTile({super.key});
+class MyAccountTile extends StatefulWidget {
+  MyAccountTile({
+    super.key,
+    required this.user,
+  });
+
+  final UserModel user;
+
+  @override
+  State<MyAccountTile> createState() => _MyAccountTileState();
+}
+
+class _MyAccountTileState extends State<MyAccountTile> {
+
+  final userEmail = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
-    final User user = FirebaseAuth.instance.currentUser!;
-
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -22,10 +34,21 @@ class MyAccountTile extends StatelessWidget {
         centerTitle: true,
         actions: <Widget>[
           IconButton(
-            onPressed: () {},
+            onPressed: () async {
+              final user =
+                  await UserModel.getCurrentUserData(email: userEmail!);
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => EditProfileScreen(
+                        user: user,
+                      )),
+                ),
+              );
+            },
             icon: const Icon(Icons.edit),
           ),
-          kWidth10
+          kWidth10,
         ],
       ),
       body: Padding(
@@ -33,47 +56,31 @@ class MyAccountTile extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: <Widget>[
+              kHeight80,
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Stack(
                     children: <Widget>[
                       CircleAvatarWidget(
-                        radius: 50,
-                        image: Image.asset(
-                                'assets/images/image_processing20200226-9101-ukr3oz.jpg')
-                            .image,
-                        //NetworkImage(user.photoURL!),
+                        radius: 60,
+                        image: NetworkImage(widget.user.image),
                       ),
-                      Positioned(
-                        bottom: 2,
-                        right: 10,
-                        //left: 50,
-                        child: IconButton(
-                          iconSize: 25,
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.camera_alt_outlined,
-                            color: kWhite,
-                            size: 25,
-                          ),
-                        ),
-                      )
                     ],
                   ),
                 ],
               ),
-              kHeight20,
-              const MyAccountWidget(
-                text: 'Nibu'
-                //user.displayName!,
-                // onPressed: () {},
-              ),
-              kHeight10,
+              kHeight30,
               MyAccountWidget(
-                text: user.email!
-                //user.email!,
-                // onPressed: () {},
+                text: widget.user.firstName + ' ' + widget.user.lastName,
+              ),
+              kHeight30,
+              MyAccountWidget(
+                text: widget.user.email,
+              ),
+              kHeight30,
+              MyAccountWidget(
+                text: widget.user.phoneNumber,
               )
             ],
           ),

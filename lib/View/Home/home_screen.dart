@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../../Constants/Size/sized_box.dart';
-import '../../Constants/style/text_style.dart';
+import 'package:second_project/view/Home/Widgets/home_grid_view.dart';
+import '../../constants/size/sized_box.dart';
+import '../../constants/style/text_style.dart';
 import '../Bag/bag.dart';
 import 'Widgets/category_widget.dart';
-import 'Widgets/row_widget.dart';
+import 'package:second_project/model/category_model.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -34,48 +36,57 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           child: SingleChildScrollView(
             child: Column(
-              children: <Widget> [
+              children: [
                 kHeight20,
-                TextFormField(
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    hintText: 'Search',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(
-                        Radius.circular(10),
-                      ),
-                    ),
-                  ),
-                ),
-                kHeight10,
+                CupertinoSearchTextField(),
+                kHeight20,
                 Row(
-                  children: <Widget> [
-                    Text('Categories', style: categoryStyle),
+                  children: <Widget>[
+                    Text(
+                      'Categories',
+                      style: categoryStyle,
+                    ),
                   ],
                 ),
-                kHeight10,
-                SingleChildScrollView(
-                  physics: const BouncingScrollPhysics(),
-                  scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: const <Widget> [
-                      CategoryWidget(title: 'Mobiles'),
-                      kWidth10,
-                      CategoryWidget(title: 'Laptops'),
-                      kWidth10,
-                      CategoryWidget(title: 'Tablets'),
-                      kWidth10,
-                      CategoryWidget(title: 'Accessories'),
-                      kWidth10,
-                    ],
-                  ),
+                kHeight20,
+                StreamBuilder<List<Category>>(
+                  stream: Category.getCategories(),
+                  builder: (context, snapshot) {
+                    if (snapshot.hasError) {
+                      return Center(
+                        child: Text('Something went wrong'),
+                      );
+                    } else if (snapshot.hasData) {
+                      //List<Category> category = [];
+                      final categories = snapshot.data!;
+                      if (categories.isEmpty) {
+                        return Center(
+                          child: Text('Empty'),
+                        );
+                      } else {
+                        return SizedBox(
+                          width: double.infinity,
+                          height: 40,
+                          child: ListView.builder(
+                            physics: BouncingScrollPhysics(),
+                            shrinkWrap: true,
+                            scrollDirection: Axis.horizontal,
+                            itemCount: categories.length,
+                            itemBuilder: (context, index) {
+                              return CategoryWidget(
+                                title: categories[index].category,
+                              );
+                            },
+                          ),
+                        );
+                      }
+                    } else {
+                      return CircularProgressIndicator();
+                    }
+                  },
                 ),
-                kHeight10,
-                const RowWidget(),
-                kHeight10,
-                const RowWidget(),
-                kHeight10,
-                const RowWidget()
+                kHeight20,
+                HomeGridView(),
               ],
             ),
           ),

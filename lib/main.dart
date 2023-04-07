@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'Model/google_sign_in.dart';
-import 'View/Splash/splash_screen.dart';
+import 'model/google_sign_in.dart';
+import 'view/Splash/splash_screen.dart';
 
 Future<dynamic> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -22,6 +22,9 @@ class MyApp extends StatelessWidget {
         return GoogleSignInProvider();
       },
       child: MaterialApp(
+        theme: ThemeData(
+          appBarTheme: AppBarTheme(backgroundColor: Colors.deepPurple),
+        ),
         navigatorKey: navigatorKey,
         debugShowCheckedModeBanner: false,
         home: const SplashScreen(),

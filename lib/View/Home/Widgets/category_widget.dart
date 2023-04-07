@@ -1,38 +1,61 @@
 import 'package:flutter/material.dart';
+import 'package:second_project/view/Home/category_screen.dart';
+import '../../../colours/colours.dart';
 
-import '../../../Colours/colours.dart';
-
-class CategoryWidget extends StatelessWidget {
-   const CategoryWidget({
+class CategoryWidget extends StatefulWidget {
+  CategoryWidget({
     super.key,
-   required  this.title
+    required this.title,
+    this.onTap,
   });
-  final String title;
-  //bool ontap = false;
+
+  final dynamic title;
+  final Function()? onTap;
+
+  @override
+  State<CategoryWidget> createState() => _CategoryWidgetState();
+}
+
+class _CategoryWidgetState extends State<CategoryWidget> {
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      // onTap: () {
-      //   ontap = true;
-      // },
-      child: Container(
-        width: 100,
-        height: 30,
-        decoration: BoxDecoration(
-          //color: hello(),
-          border: Border.all(color: kBlack38),
-          borderRadius: BorderRadius.circular(15)
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      child: GestureDetector(
+        onTap: () {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: ((context) => CategoryScreen(
+                    categoryName: widget.title,
+                  )
+                ),
+            ),
+          );
+        },
+        child: Container(
+          width: 120,
+          height: 30,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(
+              20,
+            ),
+            color: Colors.deepPurple,
+          ),
+          child: Center(
+            child: Text(
+              '${widget.title}',
+              maxLines: 1,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 12,
+                color: kWhite,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+          ),
         ),
-        child: Center(child: Text(title)),
       ),
     );
   }
-
-  // Color hello() {
-  //   if(ontap == true){
-  //     return kBlue;
-  //   }else{
-  //     return kWhite;
-  //   }
-  // }
 }

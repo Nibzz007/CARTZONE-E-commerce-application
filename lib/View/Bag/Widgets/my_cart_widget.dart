@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../Colours/colours.dart';
-import '../../../Constants/Size/sized_box.dart';
+import '../../../colours/colours.dart';
+import '../../../constants/size/sized_box.dart';
 
 class MyCartWidget extends StatelessWidget {
   const MyCartWidget({
