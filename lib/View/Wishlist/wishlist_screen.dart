@@ -1,14 +1,16 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:second_project/model/product_model.dart';
+import 'package:second_project/model/wishlist_model.dart';
+import 'package:second_project/view/Home/selected_item_screen.dart';
 import '../../colours/colours.dart';
 import '../../constants/style/text_style.dart';
-import '../Functions/show_dialog_method.dart';
-import '../Home/selected_item_screen.dart';
 
 class WishlistScreen extends StatelessWidget {
-  WishlistScreen({super.key, });
+  WishlistScreen({
+    super.key,
+  });
 
-  
+  final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -20,58 +22,69 @@ class WishlistScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: SafeArea(
-        child: ListView.separated(
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-                onTap: () {
-                  // Navigator.push(
-                  //   context,
-                  //   MaterialPageRoute<StatelessWidget>(
-                  //     builder: (BuildContext context) =>
-                  //         SelectedItemScreen(product: product,),
-                  //   ),
-                  // );
-                },
-                leading: SizedBox(
-                  height: 200,
-                  width: 80,
-                  child: Image.asset(
-                    'assets/images/download.jpeg',
-                    height: 50,
-                    width: 50,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                title: Text(
-                  'Apple iPhone 13',
-                  style: wishlistTitleStyle,
-                ),
-                subtitle: Text(
-                  '₹ 70,000',
-                  style: TextStyle(
-                    fontSize: 15,
-                    color: kBlue,
-                  ),
-                ),
-                trailing: IconButton(
-                  onPressed: () {
-                    showDialogMethod(
-                      context,
-                      const Text('Remove from Wishlist'),
-                      const Text('Are you sure ?'),
-                    );
+      body: StreamBuilder(
+        stream: WishList.getWishlist(user!),
+        builder: (context, snapshot) {
+          if (snapshot.hasError) {
+            return Center(
+              child: Text('Something went wrong'),
+            );
+          } else if (snapshot.hasData) {
+            final wishlist = snapshot.data!;
+            if (wishlist.isEmpty) {
+              return Center(
+                child: Text('Wishlist is empty'),
+              );
+            } else {
+              return Container(
+                child: ListView.separated(
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: ((context) =>
+                                  SelectedItemScreen(product: wishlist[index])),
+                            ),
+                          );
+                        },
+                        leading: CircleAvatar(
+                          backgroundImage: NetworkImage(
+                            wishlist[index].images[0],
+                          ),
+                          radius: 40,
+                        ),
+                        title: Text(
+                          wishlist[index].productName,
+                          style: wishlistTitleStyle,
+                          maxLines: 1,
+                        ),
+                        subtitle: Text(
+                          wishlist[index].price,
+                          style: TextStyle(
+                            fontSize: 15,
+                            color: kBlue,
+                          ),
+                        ),
+                        trailing: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.delete,
+                          ),
+                        ));
                   },
-                  icon: const Icon(
-                    Icons.delete,
-                  ),
-                ));
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const Divider();
-          },
-          itemCount: 10,
-        ),
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const Divider();
+                  },
+                  itemCount: wishlist.length,
+                ),
+              );
+            }
+          } else {
+            return CircularProgressIndicator();
+          }
+        },
       ),
     );
   }

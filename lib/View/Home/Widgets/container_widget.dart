@@ -1,6 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/model/product_model.dart';
+import 'package:second_project/model/wishlist_model.dart';
+import 'package:second_project/utils/show_snack_bar.dart';
+import 'package:second_project/view/Wishlist/wishlist_screen.dart';
 import '../../../colours/colours.dart';
 import '../../../constants/size/sized_box.dart';
 import '../../../view/Home/selected_item_screen.dart';
@@ -10,8 +14,9 @@ class ContainerWidget extends StatelessWidget {
     super.key,
     required this.product,
   });
- 
+
   final Product product;
+  final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
   Widget build(BuildContext context) {
@@ -46,22 +51,59 @@ class ContainerWidget extends StatelessWidget {
                     width: double.infinity,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                        image: NetworkImage(
-                          product.images[0],
-                        ),
-                        fit: BoxFit.fill
-                      ),
+                          image: NetworkImage(
+                            product.images[0],
+                          ),
+                          fit: BoxFit.fill),
                     ),
                   ),
                   Positioned(
                     child: Row(
                       children: <Widget>[
-                        IconButton(
-                          onPressed: () {},
-                          icon: Icon(
-                            Icons.favorite_outline_outlined,
-                            color: kRed,
-                          ),
+                        StreamBuilder(
+                          stream: WishList.getWishlist(user!),
+                          builder: (context, snapshot) {
+                            if (snapshot.hasError) {
+                              return Center(
+                                child: Text('Something went wrong'),
+                              );
+                            } else if (snapshot.hasData) {
+                              final wishlist = snapshot.data;
+                              return GestureDetector(
+                                  onTap: () async {
+                                    if (wishlist
+                                        .where((element) =>
+                                            element.productName ==
+                                            product.productName)
+                                        .isEmpty) {
+                                      await WishList.addToWishlist(
+                                          user!, product);
+                                      showSnackBar(
+                                          context, 'Product added to wishlist', Colors.deepPurple);
+                                    } else {
+                                      await WishList.deleteFromWishlist(
+                                          user!, product);
+                                      showSnackBar(
+                                          context, 'Product Removed from wishlist' ,Colors.deepPurple);
+                                    }
+                                  },
+                                  child: wishlist!
+                                          .where((element) =>
+                                              element.productName ==
+                                              product.productName)
+                                          .isEmpty
+                                      ? Icon(
+                                          Icons.favorite_border,
+                                          color: kBlack,
+                                        )
+                                      : Icon(
+                                          Icons.favorite,
+                                          color: kRed,
+                                        ));
+                            } else {
+                              return CircularProgressIndicator();
+                            }
+                          },
                         ),
                       ],
                     ),

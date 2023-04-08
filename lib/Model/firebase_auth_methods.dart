@@ -28,7 +28,7 @@ class FirebaseAuthMethods {
             ),
           );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context, e.message!);
+      showSnackBar(context, e.message!, Colors.red);
     }
   }
 }

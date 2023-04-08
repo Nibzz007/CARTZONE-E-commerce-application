@@ -148,7 +148,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       image: newImage!,
                     );
                     await UserModel.editUserDetails(user: newUser);
-                    showSnackBar(context, 'Profile updated successfully');
+                    showSnackBar(context, 'Profile updated successfully', Colors.deepPurple);
                     setState(() {
                       
                     });

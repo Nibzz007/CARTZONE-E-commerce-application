@@ -17,13 +17,12 @@ class CircleAvatarWidget extends StatelessWidget {
       height: 100,
       width: 100,
       decoration: BoxDecoration(
-        border: Border.all(width: 0.2),
-        borderRadius: BorderRadius.circular(radius,)
-        
-      ),
+          border: Border.all(width: 0.2),
+          borderRadius: BorderRadius.circular(
+            radius,
+          )),
       child: CircleAvatar(
         backgroundColor: kWhite,
-        
         radius: radius,
         backgroundImage: image,
       ),

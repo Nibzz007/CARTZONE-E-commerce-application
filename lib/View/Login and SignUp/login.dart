@@ -197,7 +197,7 @@ class _LogInScreenState extends State<LogInScreen> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context, 'E-mail or Password is incorrect');
+      showSnackBar(context, 'E-mail or Password is incorrect',Colors.deepPurple);
     }
     navigatorKey.currentState!
         .popUntil((Route<dynamic> route) => route.isFirst);

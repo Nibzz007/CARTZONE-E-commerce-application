@@ -44,42 +44,5 @@ class HomeGridView extends StatelessWidget {
         }
       }),
     );
-    // return Row(
-    //   children: <Widget>[
-    //     ContainerWidget(
-    //       onPress: () {
-    //         Navigator.push(
-    //           context,
-    //           MaterialPageRoute <StatelessWidget> (
-    //             builder: (BuildContext context) => const SelectedItemScreen(),
-    //           ),
-    //         );
-    //       },
-    //       image: Image.asset(
-    //         'assets/images/My project (6).png',
-    //         height: 140,
-    //         width: double.infinity,
-    //         fit: BoxFit.contain,
-    //       ),
-    //     ),
-    //     kWidth10,
-    //     ContainerWidget(
-    //       onPress: () {
-    //         Navigator.push(
-    //           context,
-    //           MaterialPageRoute <StatelessWidget> (
-    //             builder: (BuildContext context) => const SelectedItemScreen(),
-    //           ),
-    //         );
-    //       },
-    //       image: Image.asset(
-    //         'assets/images/My project (6).png',
-    //         height: 140,
-    //         width: double.infinity,
-    //         fit: BoxFit.contain,
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }
