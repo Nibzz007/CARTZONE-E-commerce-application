@@ -1,17 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 
 class Cart {
   final String productName;
   final String image;
-  final int size;
   final int price;
   final int itemCount;
 
   Cart({
     required this.productName,
     required this.image,
-    required this.size,
     required this.price,
     required this.itemCount,
   });
@@ -20,7 +17,6 @@ class Cart {
     return {
       'productName': productName,
       'image': image,
-      'size': size,
       'price': price,
       'itemCount': itemCount
     };
@@ -30,7 +26,6 @@ class Cart {
     return Cart(
       productName: json['productName'],
       image: json['image'],
-      size: json['size'],
       price: json['price'],
       itemCount: json['itemCount'],
     );
@@ -40,7 +35,6 @@ class Cart {
     required String user,
     required String productName,
     required String image,
-    required int size,
     required int price,
     required int itemCount,
   }) async {
@@ -51,13 +45,12 @@ class Cart {
         .doc(user)
         .collection('Cart')
         .doc(
-          productName + size.toString(),
+          productName
         );
 
     final cart = Cart(
       productName: productName,
       image: image,
-      size: size,
       price: price,
       itemCount: itemCount,
     );
@@ -78,14 +71,13 @@ class Cart {
         .doc(user)
         .collection('Cart')
         .doc(
-          cartItem.productName + cartItem.size.toString(),
+          cartItem.productName
         );
     final cart = Cart(
       productName: cartItem.productName,
       image: cartItem.image,
-      size: cartItem.size,
       price: cartItem.price,
-      itemCount: cartItem.itemCount,
+      itemCount: quantity,
     );
 
     final json = cart.toJson();
@@ -103,7 +95,7 @@ class Cart {
         .doc(user)
         .collection('Cart')
         .doc(
-          cartItem.productName + cartItem.size.toString(),
+          cartItem.productName
         )
         .delete();
   }

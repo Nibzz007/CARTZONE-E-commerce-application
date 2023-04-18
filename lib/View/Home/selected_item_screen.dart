@@ -1,28 +1,42 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:second_project/model/cart_model.dart';
 import 'package:second_project/model/product_model.dart';
+import 'package:second_project/utils/show_snack_bar.dart';
 import '../../colours/colours.dart';
 import '../../constants/size/sized_box.dart';
 import '../../constants/style/text_style.dart';
-import '../Address/saved_address.dart';
-import '../Bag/bag.dart';
+import '../../view/Account/address/saved_address.dart';
+import '../bag/bag.dart';
 import 'Widgets/selected_item_elevated_button_widget.dart';
 
 class SelectedItemScreen extends StatefulWidget {
-  SelectedItemScreen({
+  const SelectedItemScreen({
     super.key,
     required this.product,
   });
 
-  Product product;
+  final Product product;
 
   @override
   State<SelectedItemScreen> createState() => _SelectedItemScreenState();
 }
 
 class _SelectedItemScreenState extends State<SelectedItemScreen> {
-  double rating = 0;
+  //double rating = 0;
+  bool isClicked = true;
+
+  int quantity = 1;
+
+  getQuantity(int newQuantity) {
+    setState(() {
+      quantity = newQuantity;
+    });
+  }
+
+  final user = FirebaseAuth.instance.currentUser!.email;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,28 +76,30 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 Text(
                   widget.product.productName,
                   style: GoogleFonts.montserrat(
-                      fontSize: 15, fontWeight: FontWeight.w600),
+                    fontSize: 15,
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 kHeight10,
-                Row(
-                  children: <Widget>[
-                    RatingBar.builder(
-                      itemSize: 20,
-                      minRating: 1,
-                      updateOnDrag: true,
-                      itemBuilder: (BuildContext context, _) => const Icon(
-                        Icons.star,
-                        color: Colors.amber,
-                      ),
-                      onRatingUpdate: (double rating) => setState(() {
-                        this.rating = rating;
-                      }),
-                    ),
-                    kWidth10,
-                    Text('$rating'),
-                  ],
-                ),
-                kHeight5,
+                // Row(
+                //   children: <Widget>[
+                //     RatingBar.builder(
+                //       itemSize: 20,
+                //       minRating: 1,
+                //       updateOnDrag: true,
+                //       itemBuilder: (BuildContext context, _) => const Icon(
+                //         Icons.star,
+                //         color: Colors.amber,
+                //       ),
+                //       onRatingUpdate: (double rating) => setState(() {
+                //         this.rating = rating;
+                //       }),
+                //     ),
+                //     kWidth10,
+                //     Text('$rating'),
+                //   ],
+                // ),
+                // kHeight5,
                 Row(
                   children: <Widget>[
                     Icon(
@@ -108,7 +124,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                     children: <Widget>[
                       //kWidth50,
                       Text(
-                        widget.product.price,
+                        '₹ ${widget.product.price}',
                         style: priceStyle,
                       )
                     ],
@@ -129,7 +145,10 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                     kHeight10,
                     Text(
                       widget.product.description,
-                      style: TextStyle(height: 2, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                        height: 2,
+                        fontWeight: FontWeight.w500,
+                      ),
                     ),
                   ],
                 ),
@@ -141,19 +160,46 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: <Widget>[
-                    SelectedItemElevatedButtonWidget(
-                      text: 'Add to Cart',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute<StatelessWidget>(
-                            builder: (BuildContext context) =>
-                                const BagScreen(),
+                    isClicked
+                        ? SelectedItemElevatedButtonWidget(
+                            text: 'Add to Cart',
+                            onPressed: () async {
+                              setState(() {
+                                isClicked = false;
+                              });
+                              await Cart.addToCart(
+                                user: user!,
+                                productName: widget.product.productName,
+                                image: widget.product.images[0],
+                                price: widget.product.price,
+                                itemCount: quantity,
+                              );
+                              showSnackBar(
+                                context,
+                                'Product added to Cart successfully',
+                                Colors.purple,
+                              );
+                            },
+                            backColor: Colors.white,
+                          )
+                        : SelectedItemElevatedButtonWidget(
+                            text: 'Go to cart',
+                            onPressed: () async {
+                              setState(() {
+                                isClicked = true;
+                              });
+
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute<StatelessWidget>(
+                                  builder: (BuildContext context) => BagScreen(
+                                    getQuantity: getQuantity,
+                                  ),
+                                ),
+                              );
+                            },
+                            backColor: Colors.white,
                           ),
-                        );
-                      },
-                      backColor: Colors.white,
-                    ),
                     SelectedItemElevatedButtonWidget(
                       text: 'Buy Now',
                       onPressed: () {

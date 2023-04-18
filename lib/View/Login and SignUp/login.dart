@@ -11,7 +11,6 @@ import '../../constants/style/text_style.dart';
 import '../../model/google_sign_in.dart';
 import '../../main.dart';
 import '../../utils/show_snack_bar.dart';
-import '../BottomNav/bottom_navigation.dart';
 import '../Widgets/elvated_button_widget.dart';
 import '../Widgets/row_text_widget.dart';
 import '../Widgets/text_form_field_widget.dart';
@@ -123,29 +122,36 @@ class _LogInScreenState extends State<LogInScreen> {
                         kHeight10,
                         const Text('Or'),
                         kHeight10,
-                        ElevatedButton.icon(
-                          style: ElevatedButton.styleFrom(
-                            fixedSize: const Size(250, 40),
-                            backgroundColor: kWhite,
-                          ),
-                          icon: const FaIcon(
-                            FontAwesomeIcons.google,
-                            color: Colors.red,
-                          ),
-                          onPressed: () {
-                            final GoogleSignInProvider provider =
-                                Provider.of<GoogleSignInProvider>(
-                              context,
-                              listen: false,
-                            );
-                            provider.googleLogIn();
-                          },
-                          label: Text(
-                            'Sign in With Google',
-                            style: TextStyle(
-                              color: kBlack,
-                              fontSize: 19,
-                              fontWeight: FontWeight.w600,
+                        Container(
+                          width: double.infinity,
+                          height: 50,
+                          child: ElevatedButton.icon(
+                            style: ElevatedButton.styleFrom(
+                              fixedSize: const Size(250, 40),
+                              backgroundColor: kWhite,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)
+                              )
+                            ),
+                            icon: const FaIcon(
+                              FontAwesomeIcons.google,
+                              color: Colors.red,
+                            ),
+                            onPressed: () {
+                              final GoogleSignInProvider provider =
+                                  Provider.of<GoogleSignInProvider>(
+                                context,
+                                listen: false,
+                              );
+                              provider.googleLogIn();
+                            },
+                            label: Text(
+                              'Sign in With Google',
+                              style: TextStyle(
+                                color: kBlack,
+                                fontSize: 19,
+                                fontWeight: FontWeight.w600,
+                              ),
                             ),
                           ),
                         ),
@@ -197,7 +203,7 @@ class _LogInScreenState extends State<LogInScreen> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context, 'E-mail or Password is incorrect',Colors.deepPurple);
+      showSnackBar(context, 'E-mail or Password is incorrect',Colors.red);
     }
     navigatorKey.currentState!
         .popUntil((Route<dynamic> route) => route.isFirst);

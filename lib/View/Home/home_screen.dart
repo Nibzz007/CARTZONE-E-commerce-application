@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:second_project/view/Home/Widgets/home_grid_view.dart';
 import '../../constants/size/sized_box.dart';
 import '../../constants/style/text_style.dart';
-import '../Bag/bag.dart';
 import 'Widgets/category_widget.dart';
 import 'package:second_project/model/category_model.dart';
 
@@ -15,21 +14,21 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       //backgroundColor: kGrey300,
       appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<StatelessWidget>(
-                  builder: (BuildContext context) => const BagScreen(),
-                ),
-              );
-            },
-            icon: const Icon(
-              Icons.shopping_cart_sharp,
-            ),
-          ),
-        ],
+        // actions: <Widget>[
+        //   IconButton(
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute<StatelessWidget>(
+        //           builder: (BuildContext context) => BagScreen(),
+        //         ),
+        //       );
+        //     },
+        //     icon: const Icon(
+        //       Icons.shopping_cart_sharp,
+        //     ),
+        //   ),
+        // ],
       ),
       body: SafeArea(
         child: Padding(

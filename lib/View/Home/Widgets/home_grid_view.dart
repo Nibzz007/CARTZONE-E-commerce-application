@@ -27,7 +27,7 @@ class HomeGridView extends StatelessWidget {
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 mainAxisSpacing: 10,
-                crossAxisSpacing: 1,
+                crossAxisSpacing: 10,
                 childAspectRatio: 0.9,
               ),
               children: products

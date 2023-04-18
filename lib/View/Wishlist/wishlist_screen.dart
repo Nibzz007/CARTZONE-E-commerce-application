@@ -61,14 +61,16 @@ class WishlistScreen extends StatelessWidget {
                           maxLines: 1,
                         ),
                         subtitle: Text(
-                          wishlist[index].price,
+                          '₹ ${wishlist[index].price}',
                           style: TextStyle(
                             fontSize: 15,
                             color: kBlue,
                           ),
                         ),
                         trailing: IconButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            await WishList.deleteFromWishlist(user!, wishlist[index]);
+                          },
                           icon: const Icon(
                             Icons.delete,
                           ),

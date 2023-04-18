@@ -2,13 +2,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/model/user_model.dart';
+import 'package:second_project/view/account/orders/order_screen.dart';
 import '../../constants/size/sized_box.dart';
 import '../../constants/style/text_style.dart';
 import '../Functions/show_dialog_method.dart';
 import 'Widgets/circle_avatar_widget.dart';
 import 'Widgets/listtile_widget.dart';
 import 'my_account_tile.dart';
-import 'my_addresses.dart';
+import 'address/my_addresses.dart';
 
 class ProfileScreen extends StatelessWidget {
   ProfileScreen({super.key});
@@ -32,7 +33,7 @@ class ProfileScreen extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: SafeArea(
           child: Column(
-            children:[
+            children: [
               FutureBuilder<UserModel>(
                 future: UserModel.getCurrentUserData(email: userEmail!),
                 builder: ((context, snapshot) {
@@ -59,7 +60,8 @@ class ProfileScreen extends StatelessWidget {
                           icon: const Icon(Icons.account_circle),
                           title: const Text('My Account'),
                           onPress: () async {
-                            final user = await UserModel.getCurrentUserData(email: userEmail!);
+                            final user = await UserModel.getCurrentUserData(
+                                email: userEmail!);
                             Navigator.push(
                               context,
                               MaterialPageRoute<StatelessWidget>(
@@ -82,7 +84,14 @@ class ProfileScreen extends StatelessWidget {
                   'My orders',
                   style: listStyle,
                 ),
-                onPress: () {},
+                onPress: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: ((context) => OrderScreen()),
+                    ),
+                  );
+                },
               ),
               ListTileWidget(
                 icon: const Icon(Icons.list_alt_rounded),
@@ -94,7 +103,7 @@ class ProfileScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute<StatelessWidget>(
-                      builder: (BuildContext context) => const MyAddresses(),
+                      builder: (BuildContext context) => MyAddresses(),
                     ),
                   );
                 },

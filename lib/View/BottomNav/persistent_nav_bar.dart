@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
-
 import '../../View/Account/account_screen.dart';
 import '../../View/Bag/bag.dart';
 import '../../View/Home/home_screen.dart';
@@ -25,8 +22,10 @@ class _BottomNavBarPersistentState extends State<BottomNavBarPersistent> {
   }
 
   List<StatelessWidget> screens = <StatelessWidget>[
-    const HomeScreen(),
-    const BagScreen(),
+    HomeScreen(),
+    BagScreen(
+      getQuantity: (p0) {},
+    ),
     WishlistScreen(),
     ProfileScreen()
   ];
@@ -66,8 +65,7 @@ class _BottomNavBarPersistentState extends State<BottomNavBarPersistent> {
         screenTransitionAnimation: const ScreenTransitionAnimation(
           animateTabTransition: true,
         ),
-        navBarStyle: NavBarStyle
-              .style3,
+        navBarStyle: NavBarStyle.style3,
       ),
     );
   }

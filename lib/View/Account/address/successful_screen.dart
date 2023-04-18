@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../colours/colours.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
-import '../BottomNav/bottom_navigation.dart';
-import '../Widgets/elvated_button_widget.dart';
+import 'package:second_project/view/Home/home_screen.dart';
+import '../../../colours/colours.dart';
+import '../../../constants/size/sized_box.dart';
+import '../../../constants/style/text_style.dart';
+import '../../Widgets/elvated_button_widget.dart';
 
 class SuccessfulScreen extends StatelessWidget {
   const SuccessfulScreen({super.key});
@@ -35,7 +35,7 @@ class SuccessfulScreen extends StatelessWidget {
                       Navigator.pushAndRemoveUntil(
                         context,
                         MaterialPageRoute<StatelessWidget>(
-                          builder: (BuildContext context) => const BottomNav(),
+                          builder: (BuildContext context) => HomeScreen(),
                         ),
                         (Route<dynamic> route) => false,
                       );

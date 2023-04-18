@@ -4,10 +4,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/model/product_model.dart';
 import 'package:second_project/model/wishlist_model.dart';
 import 'package:second_project/utils/show_snack_bar.dart';
-import 'package:second_project/view/Wishlist/wishlist_screen.dart';
 import '../../../colours/colours.dart';
 import '../../../constants/size/sized_box.dart';
-import '../../../view/Home/selected_item_screen.dart';
+import '../../../view/home/selected_item_screen.dart';
 
 class ContainerWidget extends StatelessWidget {
   ContainerWidget({
@@ -129,7 +128,7 @@ class ContainerWidget extends StatelessWidget {
                 ),
               ],
             ),
-            kHeight10,
+            kHeight5,
             Row(
               children: [
                 Padding(
@@ -137,7 +136,7 @@ class ContainerWidget extends StatelessWidget {
                     left: 5,
                   ),
                   child: Text(
-                    product.price,
+                    '₹ ${product.price}',
                     textAlign: TextAlign.start,
                     style: GoogleFonts.montserrat(
                       fontSize: 13,

@@ -4,7 +4,7 @@ class Product {
   final dynamic productName;
   final List<dynamic> images;
   final dynamic description;
-  final dynamic price;
+  final int price;
   final dynamic category;
   Product({
     required this.productName,
@@ -46,4 +46,5 @@ class Product {
               .toList(),
         );
   }
+
 }

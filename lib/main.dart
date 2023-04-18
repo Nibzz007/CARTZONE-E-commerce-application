@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'model/google_sign_in.dart';
-import 'view/Splash/splash_screen.dart';
+import 'view/splash/splash_screen.dart';
 
 Future<dynamic> main() async {
   WidgetsFlutterBinding.ensureInitialized();
