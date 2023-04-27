@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:second_project/constants/size/sized_box.dart';
+import 'package:second_project/view/utils/constants/size/sized_box.dart';
 import 'package:second_project/model/order_moderl.dart';
 import 'package:second_project/view/account/orders/order_container_widget.dart';
 

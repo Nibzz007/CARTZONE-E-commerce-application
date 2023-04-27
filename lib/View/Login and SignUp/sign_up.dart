@@ -1,13 +1,11 @@
 import 'package:email_validator/email_validator.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:second_project/view/Login%20and%20SignUp/user_details.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
-import '../../model/firebase_auth_methods.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
 import '../Widgets/row_text_widget.dart';
 import '../Widgets/text_form_field_widget.dart';
+import 'package:second_project/View/utils/constants/style/text_style.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -51,7 +49,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       kHeight40,
                       Text(
                         'Create a new account',
-                        style: signupStyle,
                       ),
                     ],
                   ),

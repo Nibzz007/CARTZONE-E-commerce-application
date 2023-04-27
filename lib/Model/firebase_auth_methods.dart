@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:second_project/view/utils/show_snack_bar.dart';
 
 import '../View/Login and SignUp/login.dart';
-import '../utils/show_snack_bar.dart';
 
 class FirebaseAuthMethods {
   FirebaseAuthMethods(this._auth);

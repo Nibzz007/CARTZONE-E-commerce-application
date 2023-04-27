@@ -2,10 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:second_project/model/user_model.dart';
 import 'package:second_project/view/Account/edit_profile_screen.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
-import 'Widgets/circle_avatar_widget.dart';
-import 'Widgets/my_account_widget.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
+import 'widgets/circle_avatar_widget.dart';
+import 'widgets/my_account_widget.dart';
 
 class MyAccountTile extends StatefulWidget {
   MyAccountTile({

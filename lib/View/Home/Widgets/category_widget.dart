@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:second_project/view/Home/category_screen.dart';
-import '../../../colours/colours.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
 
 class CategoryWidget extends StatefulWidget {
   CategoryWidget({

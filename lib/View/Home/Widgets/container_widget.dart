@@ -1,12 +1,13 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:second_project/main.dart';
 import 'package:second_project/model/product_model.dart';
 import 'package:second_project/model/wishlist_model.dart';
-import 'package:second_project/utils/show_snack_bar.dart';
-import '../../../colours/colours.dart';
-import '../../../constants/size/sized_box.dart';
-import '../../../view/home/selected_item_screen.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/utils/show_snack_bar.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../selected_item_screen.dart';
 
 class ContainerWidget extends StatelessWidget {
   ContainerWidget({
@@ -23,9 +24,7 @@ class ContainerWidget extends StatelessWidget {
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
-            builder: ((context) => SelectedItemScreen(
-                  product: product,
-                )),
+            builder: (context) => SelectedItemScreen(product: product),
           ),
         );
       },
@@ -35,8 +34,8 @@ class ContainerWidget extends StatelessWidget {
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(15),
           border: Border.all(
-            color: kBlack38,
-            width: 0.3,
+            color: kDeepPurple,
+            width: 0.2,
           ),
         ),
         child: Column(
@@ -69,36 +68,52 @@ class ContainerWidget extends StatelessWidget {
                             } else if (snapshot.hasData) {
                               final wishlist = snapshot.data;
                               return GestureDetector(
-                                  onTap: () async {
-                                    if (wishlist
+                                onTap: () async {
+                                  showDialog(
+                                    context: context,
+                                    builder: ((context) {
+                                      return const Center(
+                                        child: CircularProgressIndicator(),
+                                      );
+                                    }),
+                                    barrierDismissible: false,
+                                  );
+                                  if (wishlist
+                                      .where((element) =>
+                                          element.productName ==
+                                          product.productName)
+                                      .isEmpty) {
+                                    await WishList.addToWishlist(
+                                        user!, product);
+                                    showSnackBar(
+                                        context,
+                                        'Product added to wishlist',
+                                        Colors.deepPurple);
+                                  } else {
+                                    await WishList.deleteFromWishlist(
+                                        user!, product);
+                                    showSnackBar(
+                                      context,
+                                      'Product Removed from wishlist',
+                                      Colors.deepPurple,
+                                    );
+                                  }
+                                  navigatorKey.currentState!.popUntil((route) => route.isFirst);
+                                },
+                                child: wishlist!
                                         .where((element) =>
                                             element.productName ==
                                             product.productName)
-                                        .isEmpty) {
-                                      await WishList.addToWishlist(
-                                          user!, product);
-                                      showSnackBar(
-                                          context, 'Product added to wishlist', Colors.deepPurple);
-                                    } else {
-                                      await WishList.deleteFromWishlist(
-                                          user!, product);
-                                      showSnackBar(
-                                          context, 'Product Removed from wishlist' ,Colors.deepPurple);
-                                    }
-                                  },
-                                  child: wishlist!
-                                          .where((element) =>
-                                              element.productName ==
-                                              product.productName)
-                                          .isEmpty
-                                      ? Icon(
-                                          Icons.favorite_border,
-                                          color: kBlack,
-                                        )
-                                      : Icon(
-                                          Icons.favorite,
-                                          color: kRed,
-                                        ));
+                                        .isEmpty
+                                    ? Icon(
+                                        Icons.favorite_border,
+                                        color: kBlack,
+                                      )
+                                    : Icon(
+                                        Icons.favorite,
+                                        color: kRed,
+                                      ),
+                              );
                             } else {
                               return CircularProgressIndicator();
                             }

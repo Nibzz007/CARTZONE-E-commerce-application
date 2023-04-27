@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../../colours/colours.dart';
-import '../../constants/style/text_style.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import '../../view/utils/constants/style/text_style.dart';
 import '../../model/google_sign_in.dart';
 import '../Widgets/text_button_widget.dart';
 
@@ -15,7 +14,7 @@ Future<dynamic> showDialogMethod(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: kLightBlue,
+        backgroundColor: kDeepPurple,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
@@ -36,12 +35,6 @@ Future<dynamic> showDialogMethod(
               final GoogleSignInProvider provider = Provider.of<GoogleSignInProvider>(context, listen: false);
               provider.logOut();
               Navigator.pop(context);
-              // Navigator.pushReplacement(
-              //   context,
-              //   MaterialPageRoute<StatelessWidget>(
-              //     builder: (BuildContext context) => const LogInScreen(),
-              //   ),
-              // );
             },
             text: Text(
               'Yes',

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/constants/style/text_style.dart';
+import 'package:second_project/view/utils/constants/style/text_style.dart';
 import 'package:second_project/view/account/orders/active_order_screen.dart';
 import 'package:second_project/view/account/orders/completed_order_screen.dart';
 
@@ -17,10 +17,16 @@ class OrderScreen extends StatelessWidget {
             style: appBarTitleStyle,
           ),
           centerTitle: true,
-          bottom: TabBar(tabs: [
-            Text('Active'),
-            Text('Completed'),
-          ]),
+          bottom: TabBar(
+            labelPadding: EdgeInsets.only(
+              bottom: 10,
+              top: 10,
+            ),
+            tabs: [
+              Text('Active'),
+              Text('Completed'),
+            ],
+          ),
         ),
         body: TabBarView(
           children: [

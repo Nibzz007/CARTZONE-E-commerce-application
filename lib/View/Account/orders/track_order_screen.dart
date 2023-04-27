@@ -1,7 +1,7 @@
 import 'package:another_stepper/another_stepper.dart';
 import 'package:flutter/material.dart';
-import 'package:second_project/colours/colours.dart';
-import 'package:second_project/constants/size/sized_box.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/utils/constants/size/sized_box.dart';
 import 'package:second_project/model/order_moderl.dart';
 import 'package:second_project/view/account/orders/order_container_widget.dart';
 
@@ -49,25 +49,28 @@ class TrackOrderScreen extends StatelessWidget {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            OrderContainer(
-              order: order,
-              delivertStatus: 'In Delivery',
-              onTap: () {},
-              orderType: '',
-            ),
-            kHeight20,
-            Text('Order status details'),
-            AnotherStepper(
-              activeIndex: order.deliveryType,
-              stepperList: stepperData,
-              stepperDirection: Axis.vertical,
-              verticalGap: 50,
-              activeBarColor: kWhite,
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              OrderContainer(
+                order: order,
+                delivertStatus: 'In Delivery',
+                onTap: () {},
+                orderType: '',
+              ),
+              kHeight20,
+              Text('Order status details'),
+              AnotherStepper(
+                activeIndex: order.deliveryType,
+                stepperList: stepperData,
+                stepperDirection: Axis.vertical,
+                verticalGap: 50,
+                activeBarColor: kWhite,
+              ),
+            ],
+          ),
         ),
       ),
     );

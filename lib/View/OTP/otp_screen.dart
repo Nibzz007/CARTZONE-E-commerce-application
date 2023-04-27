@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:pinput/pinput.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../Login%20and%20SignUp/login.dart';
 
 class OtpScreen extends StatelessWidget {

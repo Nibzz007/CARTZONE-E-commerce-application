@@ -1,9 +1,11 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:second_project/model/product_model.dart';
 import 'package:second_project/view/Home/Widgets/home_grid_view.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
-import 'Widgets/category_widget.dart';
+import 'package:second_project/view/home/search_all_products.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
+import 'widgets/category_widget.dart';
 import 'package:second_project/model/category_model.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,24 +14,21 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //backgroundColor: kGrey300,
       appBar: AppBar(
-        // actions: <Widget>[
-        //   IconButton(
-        //     onPressed: () {
-        //       Navigator.push(
-        //         context,
-        //         MaterialPageRoute<StatelessWidget>(
-        //           builder: (BuildContext context) => BagScreen(),
-        //         ),
-        //       );
-        //     },
-        //     icon: const Icon(
-        //       Icons.shopping_cart_sharp,
-        //     ),
-        //   ),
-        // ],
-      ),
+        centerTitle: true,
+        elevation: 10,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              bottomLeft: Radius.circular(15),
+              bottomRight: Radius.circular(15),
+            ),
+          ),
+          toolbarHeight: 70,
+          title: Text(
+            'CARTZONE',
+            style: GoogleFonts.eczar(
+                fontSize: 26, fontWeight: FontWeight.w500, letterSpacing: 10),
+          )),
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -37,7 +36,42 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 kHeight20,
-                CupertinoSearchTextField(),
+                GestureDetector(
+                  onTap: (() async {
+                    List<Product> allProductsList =
+                        await Product.getProducts().first;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: ((context) => SearchScreen(
+                              allProductsList: allProductsList,
+                            )),
+                      ),
+                    );
+                  }),
+                  child: Container(
+                    width: double.infinity,
+                    height: 36,
+                    decoration: BoxDecoration(
+                        border: Border.all(width: 0.2),
+                        borderRadius: BorderRadius.circular(10),
+                        color: Colors.grey.shade300),
+                    child: Row(
+                      children: [
+                        kWidth10,
+                        Icon(
+                          Icons.search,
+                        ),
+                        kWidth10,
+                        Text(
+                          'Search for products',
+                          style: TextStyle(
+                              fontWeight: FontWeight.w200, fontSize: 16),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
                 kHeight20,
                 Row(
                   children: <Widget>[

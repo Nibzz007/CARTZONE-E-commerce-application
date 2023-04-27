@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/colours/colours.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
 
 class CircleAvatarWidget extends StatelessWidget {
   const CircleAvatarWidget({

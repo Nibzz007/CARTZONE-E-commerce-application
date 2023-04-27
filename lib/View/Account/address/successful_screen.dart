@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/view/Home/home_screen.dart';
-import '../../../colours/colours.dart';
-import '../../../constants/size/sized_box.dart';
-import '../../../constants/style/text_style.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
+import 'package:second_project/view/bottomNav/persistent_nav_bar.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../../Widgets/elvated_button_widget.dart';
 
 class SuccessfulScreen extends StatelessWidget {
@@ -31,16 +32,15 @@ class SuccessfulScreen extends StatelessWidget {
                 kHeight40,
                 ElevatedButtonWidget(
                   color: kBlack,
-                    onPressed: () {
-                      Navigator.pushAndRemoveUntil(
-                        context,
-                        MaterialPageRoute<StatelessWidget>(
-                          builder: (BuildContext context) => HomeScreen(),
+                  onPressed: () {
+                    Navigator.of(context,rootNavigator: true).pushAndRemoveUntil(
+                        MaterialPageRoute(
+                          builder: ((context) => BottomNavBarPersistent()),
                         ),
-                        (Route<dynamic> route) => false,
-                      );
-                    },
-                    text: 'Continue Shopping')
+                        (route) => false);
+                  },
+                  text: 'Continue Shopping',
+                ),
               ],
             ),
           ),

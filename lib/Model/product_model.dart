@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Product {
-  final dynamic productName;
+  final String productName;
   final List<dynamic> images;
   final dynamic description;
   final int price;

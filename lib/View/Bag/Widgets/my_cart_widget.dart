@@ -1,10 +1,13 @@
 import 'dart:developer';
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../colours/colours.dart';
-import '../../../constants/size/sized_box.dart';
+import 'package:second_project/view/functions/show_dialog_method.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/utils/constants/style/text_style.dart';
+import 'package:second_project/view/widgets/elvated_button_widget.dart';
+import 'package:second_project/view/widgets/text_button_widget.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
 import '../../../model/cart_model.dart';
 
 class MyCartWidget extends StatefulWidget {
@@ -24,25 +27,18 @@ class MyCartWidget extends StatefulWidget {
 }
 
 class _MyCartWidgetState extends State<MyCartWidget> {
-
   late int quantity = widget.currentQuantity;
   final user = FirebaseAuth.instance.currentUser!.email;
-
-  @override
-  void initState() {
-    quantity.toString();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 200,
+        height: 160,
         child: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
-              height: 180,
+              height: 155,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -58,8 +54,10 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                       decoration: BoxDecoration(
                         color: kGrey300,
                         borderRadius: BorderRadius.circular(10),
+                        border: Border.all(width: 0.3),
                         image: DecorationImage(
                           image: NetworkImage(widget.cartItems[index].image),
+                          fit: BoxFit.fill,
                         ),
                       ),
                     ),
@@ -96,27 +94,23 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
-                                child: GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      quantity = quantity - 1;
-                                      if (quantity < 1) {
-                                        Cart.deleteCartItem(
-                                          user: user!,
-                                          cartItem: widget.cartItems[index],
-                                        );
-                                      }
-                                      widget.getQuantity(quantity);
-                                    });
-                                    Cart.updateCart(
-                                      cartItem: widget.cartItems[index],
-                                      quantity: quantity,
-                                      user: user!,
-                                    );
-                                    log(quantity.toString());
-                                  },
-                                  child: const Icon(Icons.remove),
-                                ),
+                                child: quantity < 2
+                                    ? Icon(Icons.remove)
+                                    : GestureDetector(
+                                        onTap: () {
+                                          setState(() {
+                                            quantity = quantity - 1;
+                                            widget.getQuantity(quantity);
+                                          });
+                                          Cart.updateCart(
+                                            cartItem: widget.cartItems[index],
+                                            quantity: quantity,
+                                            user: user!,
+                                          );
+                                          log(quantity.toString());
+                                        },
+                                        child: const Icon(Icons.remove),
+                                      ),
                               ),
                             ),
                             kWidth10,
@@ -124,7 +118,6 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                               quantity.toString(),
                               style: TextStyle(fontSize: 20),
                             ),
-                            
                             kWidth10,
                             Container(
                               height: 30,
@@ -154,6 +147,67 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                             ),
                           ],
                         ),
+                        kHeight8,
+                        Row(
+                          children: [
+                            SizedBox(
+                              height: 30,
+                              child: ElevatedButton.icon(
+                                onPressed: () {
+                                  showDialog(
+                                    context: context,
+                                    builder: ((context) {
+                                      return AlertDialog(
+                                        backgroundColor: kDeepPurple,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        title: Text(
+                                          'Remove from cart',
+                                          style: TextStyle(color: kWhite),
+                                        ),
+                                        content: Text(
+                                          'Do you want to remove the item from cart',
+                                          style: TextStyle(color: kWhite),
+                                        ),
+                                        actions: [
+                                          TextButtonWidget(
+                                            onPressed: () {
+                                              Navigator.pop(context);
+                                            },
+                                            text: Text(
+                                              'No',
+                                              style: confirmationTextStyle,
+                                            ),
+                                          ),
+                                          TextButtonWidget(
+                                            onPressed: () {
+                                              Cart.deleteCartItem(
+                                                user: user!,
+                                                cartItem:
+                                                    widget.cartItems[index],
+                                              );
+                                              Navigator.pop(context);
+                                            },
+                                            text: Text(
+                                              'Yes',
+                                              style: confirmationTextStyle,
+                                            ),
+                                          ),
+                                        ],
+                                      );
+                                    }),
+                                  );
+                                },
+                                icon: Icon(Icons.delete_outline),
+                                label: Text('Remove'),
+                                style: ElevatedButton.styleFrom(
+                                    backgroundColor: kDeepPurple),
+                              ),
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   )

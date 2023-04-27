@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:second_project/model/wishlist_model.dart';
 import 'package:second_project/view/Home/selected_item_screen.dart';
-import '../../colours/colours.dart';
-import '../../constants/style/text_style.dart';
+import '../../View/Widgets/text_button_widget.dart';
+import '../../view/utils/colours/colours.dart';
+import '../../view/utils/constants/style/text_style.dart';
 
 class WishlistScreen extends StatelessWidget {
   WishlistScreen({
@@ -33,7 +35,25 @@ class WishlistScreen extends StatelessWidget {
             final wishlist = snapshot.data!;
             if (wishlist.isEmpty) {
               return Center(
-                child: Text('Wishlist is empty'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: Lottie.asset(
+                          'assets/lottie/89039-add-to-favorite.json',
+                          frameRate: FrameRate(20)),
+                    ),
+                    Text(
+                      'Your wishlist is empty, add items',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               );
             } else {
               return Container(
@@ -69,7 +89,49 @@ class WishlistScreen extends StatelessWidget {
                         ),
                         trailing: IconButton(
                           onPressed: () async {
-                            await WishList.deleteFromWishlist(user!, wishlist[index]);
+                            showDialog(
+                              context: context,
+                              builder: ((context) {
+                                return AlertDialog(
+                                  backgroundColor: kDeepPurple,
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(10),
+                                  ),
+                                  title: Text(
+                                    'Remove from wishlist',
+                                    style: TextStyle(color: kWhite),
+                                  ),
+                                  content: Text(
+                                    'Do you want to remove the item from wishlist',
+                                    style: TextStyle(color: kWhite),
+                                  ),
+                                  actions: [
+                                    TextButtonWidget(
+                                      onPressed: () {
+                                        Navigator.pop(context);
+                                      },
+                                      text: Text(
+                                        'No',
+                                        style: confirmationTextStyle,
+                                      ),
+                                    ),
+                                    TextButtonWidget(
+                                      onPressed: () {
+                                        WishList.deleteFromWishlist(
+                                          user!,
+                                          wishlist[index],
+                                        );
+                                        Navigator.pop(context);
+                                      },
+                                      text: Text(
+                                        'Yes',
+                                        style: confirmationTextStyle,
+                                      ),
+                                    ),
+                                  ],
+                                );
+                              }),
+                            );
                           },
                           icon: const Icon(
                             Icons.delete,

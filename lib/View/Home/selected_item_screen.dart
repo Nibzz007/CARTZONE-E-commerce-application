@@ -1,15 +1,17 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:second_project/main.dart';
 import 'package:second_project/model/cart_model.dart';
 import 'package:second_project/model/product_model.dart';
-import 'package:second_project/utils/show_snack_bar.dart';
-import '../../colours/colours.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
-import '../../view/Account/address/saved_address.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/utils/show_snack_bar.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../bag/bag.dart';
-import 'Widgets/selected_item_elevated_button_widget.dart';
+import 'widgets/selected_item_elevated_button_widget.dart';
 
 class SelectedItemScreen extends StatefulWidget {
   const SelectedItemScreen({
@@ -24,9 +26,8 @@ class SelectedItemScreen extends StatefulWidget {
 }
 
 class _SelectedItemScreenState extends State<SelectedItemScreen> {
-  //double rating = 0;
   bool isClicked = true;
-
+  int activeIndex = 0;
   int quantity = 1;
 
   getQuantity(int newQuantity) {
@@ -57,19 +58,35 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
             child: Column(
               children: <Widget>[
                 Container(
-                  height: 250,
-                  width: double.infinity,
+                  height: 225,
                   decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(
-                        widget.product.images[0],
-                      ),
+                    border: Border.all(
+                      width: 0.4,
+                      color: kDeepPurple,
                     ),
                     borderRadius: BorderRadius.circular(10),
-                    border: Border.all(
-                      width: 0.8,
-                      color: kBlack38,
-                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      CarouselSlider.builder(
+                        itemCount: widget.product.images.length,
+                        itemBuilder: ((context, index, realIndex) {
+                          final String assetImage =
+                              widget.product.images[index];
+                          return buildImage(assetImage, index);
+                        }),
+                        options: CarouselOptions(
+                            height: 200,
+                            viewportFraction: 1,
+                            onPageChanged: ((index, reason) {
+                              setState(() {
+                                activeIndex = index;
+                              });
+                            })),
+                      ),
+                      kHeight5,
+                      buildIndicator(),
+                    ],
                   ),
                 ),
                 kHeight20,
@@ -81,25 +98,6 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                   ),
                 ),
                 kHeight10,
-                // Row(
-                //   children: <Widget>[
-                //     RatingBar.builder(
-                //       itemSize: 20,
-                //       minRating: 1,
-                //       updateOnDrag: true,
-                //       itemBuilder: (BuildContext context, _) => const Icon(
-                //         Icons.star,
-                //         color: Colors.amber,
-                //       ),
-                //       onRatingUpdate: (double rating) => setState(() {
-                //         this.rating = rating;
-                //       }),
-                //     ),
-                //     kWidth10,
-                //     Text('$rating'),
-                //   ],
-                // ),
-                // kHeight5,
                 Row(
                   children: <Widget>[
                     Icon(
@@ -167,6 +165,14 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                               setState(() {
                                 isClicked = false;
                               });
+                              showDialog(
+                                context: context,
+                                builder: ((context) {
+                                  return Center(
+                                    child: CircularProgressIndicator(),
+                                  );
+                                }),
+                              );
                               await Cart.addToCart(
                                 user: user!,
                                 productName: widget.product.productName,
@@ -177,8 +183,10 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                               showSnackBar(
                                 context,
                                 'Product added to Cart successfully',
-                                Colors.purple,
+                                Colors.deepPurple,
                               );
+                              navigatorKey.currentState!
+                                  .popUntil((route) => route.isFirst);
                             },
                             backColor: Colors.white,
                           )
@@ -200,34 +208,8 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                             },
                             backColor: Colors.white,
                           ),
-                    SelectedItemElevatedButtonWidget(
-                      text: 'Buy Now',
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute<StatelessWidget>(
-                            builder: (BuildContext context) =>
-                                const SavedAddress(),
-                          ),
-                        );
-                      },
-                      backColor: Colors.yellow,
-                    )
                   ],
                 ),
-
-                // CarouselSlider.builder(
-                //   itemCount: assetImages.length,
-                //   itemBuilder: ((context, index, realIndex) {
-                //     final assetImage = assetImages[index];
-
-                //     return buildImage(assetImage, index);
-                //   }),
-                //   options: CarouselOptions(
-                //     height: 200,
-                //     viewportFraction: 1
-                //   ),
-                // ),
               ],
             ),
           ),
@@ -239,11 +221,21 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
   Widget buildImage(String assetImage, int index) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12),
-      color: kGrey300,
-      child: Image.asset(
-        assetImage,
-        fit: BoxFit.cover,
+      decoration: BoxDecoration(
+        image: DecorationImage(
+          image: NetworkImage(assetImage),
+          fit: BoxFit.cover,
+        ),
       ),
+    );
+  }
+
+  Widget buildIndicator() {
+    return AnimatedSmoothIndicator(
+      activeIndex: activeIndex,
+      count: widget.product.images.length,
+      effect: JumpingDotEffect(
+          activeDotColor: kDeepPurple, dotHeight: 10, dotWidth: 15),
     );
   }
 }

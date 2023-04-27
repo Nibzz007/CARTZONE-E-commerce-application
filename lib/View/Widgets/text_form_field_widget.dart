@@ -1,21 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:second_project/colours/colours.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
-  const TextFormFieldWidget({
+  TextFormFieldWidget({
     super.key,
     required this.hintText,
     required this.icon,
     this.obscureText = false,
-    required this.controller,
-    required this.validator,
+    this.controller,
+    this.validator,
+    this.onChanged
   });
 
   final String hintText;
   final Widget icon;
   final bool obscureText;
-  final TextEditingController controller;
-  final String? Function(String?) validator;
+  TextEditingController? controller;
+  String? Function(String?)? validator;
+  Function(String)? onChanged;
+
 
   @override
   Widget build(BuildContext context) {
@@ -26,6 +29,7 @@ class TextFormFieldWidget extends StatelessWidget {
       ),
       //color: Color.fromARGB(255, 75, 129, 13),
       child: TextFormField(
+        onChanged: onChanged,
         validator: validator,
         controller: controller,
         obscureText: obscureText,

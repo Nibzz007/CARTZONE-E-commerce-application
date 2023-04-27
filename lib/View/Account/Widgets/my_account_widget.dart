@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-
-import '../../../colours/colours.dart';
-import '../../../constants/style/text_style.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 
 class MyAccountWidget extends StatelessWidget {
   const MyAccountWidget({

@@ -1,10 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:second_project/model/address_model.dart';
-import 'package:second_project/utils/show_snack_bar.dart';
-import '../../../colours/colours.dart';
-import '../../../constants/size/sized_box.dart';
-import '../../../constants/style/text_style.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/utils/show_snack_bar.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../../Widgets/elvated_button_widget.dart';
 import '../../Widgets/row_text_widget.dart';
 import '../../Widgets/text_form_field_widget.dart';
@@ -52,11 +52,11 @@ class _AddressFormState extends State<AddressForm> {
 
   @override
   void dispose() {
-    fullNameController.text;
-    placeController.text;
-    pinCodeController.text;
-    phoneNumberController.text;
-    stateController.text;
+    fullNameController.dispose();
+    placeController.dispose();
+    pinCodeController.dispose();
+    phoneNumberController.dispose();
+    stateController.dispose();
     super.dispose();
   }
 

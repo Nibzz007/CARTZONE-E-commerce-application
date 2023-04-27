@@ -3,13 +3,13 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:second_project/colours/colours.dart';
+import 'package:second_project/view/utils/constants/style/text_style.dart';
+import '../../view/utils/colours/colours.dart';
 import 'package:second_project/model/user_model.dart';
 
-import '../../Constants/style/text_style.dart';
 import '../../View/Widgets/row_text_widget.dart';
 import '../../View/Widgets/text_form_field_widget.dart';
-import '../../constants/size/sized_box.dart';
+import '../../view/utils/constants/size/sized_box.dart';
 import '../../model/firebase_auth_methods.dart';
 
 class UserDetailsScreen extends StatefulWidget {

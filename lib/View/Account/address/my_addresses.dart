@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:second_project/model/address_model.dart';
-import '../../../colours/colours.dart';
-import '../../../constants/size/sized_box.dart';
-import '../../../constants/style/text_style.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../../Account/address/address_form.dart';
 import '../../Widgets/text_button_widget.dart';
 

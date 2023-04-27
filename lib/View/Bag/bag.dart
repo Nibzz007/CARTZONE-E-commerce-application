@@ -1,10 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:second_project/view/bag/checkout_container.dart';
-import '../../constants/size/sized_box.dart';
-import '../../constants/style/text_style.dart';
+import 'package:lottie/lottie.dart';
+import 'package:second_project/view/checkout/checkout_container.dart';
+import '../../../view/utils/constants/size/sized_box.dart';
+import '../../../view/utils/constants/style/text_style.dart';
 import '../../model/cart_model.dart';
-import 'Widgets/my_cart_widget.dart';
+import 'widgets/my_cart_widget.dart';
 
 class BagScreen extends StatelessWidget {
   BagScreen({
@@ -37,7 +38,26 @@ class BagScreen extends StatelessWidget {
             final cartItems = snapshot.data;
             if (cartItems!.isEmpty) {
               return Center(
-                child: Text('The cart is empty'),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      height: 150,
+                      width: 150,
+                      child: Lottie.asset(
+                        'assets/lottie/33740-sad-empty-box.json',
+                      ),
+                    ),
+                    kHeight20,
+                    Text(
+                      'Your cart is empty!',
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                  ],
+                ),
               );
             } else {
               return SingleChildScrollView(
@@ -55,9 +75,7 @@ class BagScreen extends StatelessWidget {
                         thickness: 2,
                       ),
                       kHeight10,
-                      CheckoutContainer(
-                        cartItems: cartItems,
-                      ),
+                      CheckoutContainer(cartItems: cartItems),
                     ],
                   ),
                 ),
