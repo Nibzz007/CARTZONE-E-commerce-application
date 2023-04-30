@@ -7,7 +7,7 @@ import '../../../view/utils/constants/style/text_style.dart';
 import '../../model/cart_model.dart';
 import 'widgets/my_cart_widget.dart';
 
-class BagScreen extends StatelessWidget {
+class BagScreen extends StatefulWidget {
   BagScreen({
     super.key,
     required this.getQuantity,
@@ -15,6 +15,11 @@ class BagScreen extends StatelessWidget {
 
   final Function(int) getQuantity;
 
+  @override
+  State<BagScreen> createState() => _BagScreenState();
+}
+
+class _BagScreenState extends State<BagScreen> {
   final user = FirebaseAuth.instance.currentUser!.email;
 
   @override
@@ -64,10 +69,10 @@ class BagScreen extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(10),
                   child: Column(
-                    children: <Widget>[
+                    children:[
                       MyCartWidget(
                         cartItems: cartItems,
-                        getQuantity: getQuantity,
+                        getQuantity: widget.getQuantity,
                         currentQuantity: 1,
                       ),
                       kHeight20,

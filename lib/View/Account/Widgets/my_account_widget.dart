@@ -18,7 +18,6 @@ class MyAccountWidget extends StatelessWidget {
       width: double.infinity,
       height: 50,
       decoration: BoxDecoration(
-        color: Color.fromARGB(128, 131, 136, 91),
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
           color: kBlack38,

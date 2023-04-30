@@ -86,6 +86,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 kHeight40,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.text,
                   hintText: 'First name',
                   icon: Icon(Icons.people),
                   controller: firstNameController,
@@ -99,6 +100,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 kHeight30,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.text,
                   hintText: 'Last name',
                   icon: Icon(Icons.people),
                   controller: lastNameController,
@@ -112,6 +114,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 ),
                 kHeight30,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.number,
                   hintText: 'Phone number',
                   icon: Icon(Icons.phone_android_outlined),
                   controller: phoneNumberController,
@@ -154,7 +157,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                     });
                   }),
                   text: 'Save',
-                  color: Color.fromARGB(255, 50, 76, 21),
+                  color: kDeepPurple,
                 ),
               ],
             ),

@@ -45,37 +45,40 @@ class _SearchScreenState extends State<SearchScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            TextFormFieldWidget(
-              hintText: 'Search',
-              icon: Icon(Icons.search),
-              onChanged: (value) {
-                searchProduct(value);
-              },
-            ),
-            kHeight20,
-            (searchProductList!.isEmpty)
-                ? Expanded(
-                    child: Center(
-                    child: Text('No products'),
-                  ))
-                : GridView.builder(
-                    shrinkWrap: true,
-                    physics: ScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 0.9,
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              TextFormFieldWidget(
+                keyboardType: TextInputType.text,
+                hintText: 'Search',
+                icon: Icon(Icons.search),
+                onChanged: (value) {
+                  searchProduct(value);
+                },
+              ),
+              kHeight20,
+              (searchProductList!.isEmpty)
+                  ? Expanded(
+                      child: Center(
+                      child: Text('No products'),
+                    ))
+                  : GridView.builder(
+                      shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 10,
+                        childAspectRatio: 0.9,
+                      ),
+                      itemBuilder: (context, index) {
+                        final product = searchProductList![index];
+                        return ContainerWidget(product: product);
+                      },
+                      itemCount: searchProductList!.length,
                     ),
-                    itemBuilder: (context, index) {
-                      final product = searchProductList![index];
-                      return ContainerWidget(product: product);
-                    },
-                    itemCount: searchProductList!.length,
-                  ),
-          ],
+            ],
+          ),
         ),
       ),
     );

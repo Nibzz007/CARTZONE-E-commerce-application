@@ -13,7 +13,7 @@ TextStyle loginSubStyle = GoogleFonts.montserrat(
   fontWeight: FontWeight.w500,
 );
 TextStyle loginDonthaveacnt = GoogleFonts.montserrat(
-  fontSize: 15,
+  fontSize: 13,
   fontWeight: FontWeight.w500,
 );
 
@@ -26,7 +26,7 @@ TextStyle elvatedButtonTextStyle = GoogleFonts.montserrat(
  TextStyle elvatedTextStyle = GoogleFonts.montserrat(
   fontSize: 20,
   fontWeight: FontWeight.w700,
-  color: kBlack
+  color: kWhite
 );
 
 

@@ -67,7 +67,7 @@ class TrackOrderScreen extends StatelessWidget {
                 stepperList: stepperData,
                 stepperDirection: Axis.vertical,
                 verticalGap: 50,
-                activeBarColor: kWhite,
+                activeBarColor: kBlue,
               ),
             ],
           ),

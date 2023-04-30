@@ -81,6 +81,7 @@ class _AddressFormState extends State<AddressForm> {
                 const RowTextWidget(text: 'Full name'),
                 kHeight10,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.length < 5) {
                       return 'Please enter your full name';
@@ -96,6 +97,7 @@ class _AddressFormState extends State<AddressForm> {
                 const RowTextWidget(text: 'Locality'),
                 kHeight10,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.text,
                   validator: ((value) {
                     if (value != null && value.length < 3) {
                       return 'Enter a valid locality';
@@ -110,6 +112,7 @@ class _AddressFormState extends State<AddressForm> {
                 const RowTextWidget(text: 'Phone number'),
                 kHeight10,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value != null && value.length < 10) {
                       return 'Enter a valid phone number';
@@ -125,6 +128,7 @@ class _AddressFormState extends State<AddressForm> {
                 const RowTextWidget(text: 'State'),
                 kHeight10,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.text,
                   validator: (value) {
                     if (value != null && value.length < 3) {
                       return 'Enter a valid state';
@@ -140,6 +144,7 @@ class _AddressFormState extends State<AddressForm> {
                 const RowTextWidget(text: 'Pincode'),
                 kHeight10,
                 TextFormFieldWidget(
+                  keyboardType: TextInputType.number,
                   validator: (value) {
                     if (value != null &&
                         (value.length < 6 || value.length > 6)) {

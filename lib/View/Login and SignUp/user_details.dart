@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:second_project/main.dart';
 import 'package:second_project/view/utils/constants/style/text_style.dart';
 import '../../view/utils/colours/colours.dart';
 import 'package:second_project/model/user_model.dart';
@@ -40,7 +41,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 219, 210, 210),
+      //backgroundColor: Color.fromARGB(255, 219, 210, 210),
       body: SingleChildScrollView(
         child: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -65,7 +66,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                     children: [
                       CircleAvatar(
                         radius: 60,
-                        backgroundColor: kWhite,
+                        backgroundColor: Colors.black26,
                         backgroundImage: imagePath == null
                             ? null
                             : FileImage(
@@ -98,6 +99,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   const RowTextWidget(text: 'First Name'),
                   kHeight20,
                   TextFormFieldWidget(
+                    keyboardType: TextInputType.text,
                     validator: (String? value) {
                       if (value != null && value.length < 4) {
                         return 'Enter a valid name';
@@ -113,6 +115,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   const RowTextWidget(text: 'Last Name'),
                   kHeight20,
                   TextFormFieldWidget(
+                    keyboardType: TextInputType.text,
                     validator: (String? value) {
                       if (value != null && value.length < 2) {
                         return 'Enter a valid last name';
@@ -128,7 +131,8 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   const RowTextWidget(text: 'Phone number'),
                   kHeight20,
                   TextFormFieldWidget(
-                    obscureText: true,
+                    keyboardType: TextInputType.number,
+                    obscureText: false,
                     validator: (String? value) {
                       String pattern = r'(^(?:[+0]9)?[0-9]{10,12}$)';
                       RegExp regExp = RegExp(pattern);
@@ -147,11 +151,20 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                   kHeight50,
                   ElevatedButton(
                     onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: ((context) {
+                          return const Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }),
+                      );
                       if (!formKey.currentState!.validate()) {
                         return;
                       }
                       signUpUser(context);
-
+                      // navigatorKey.currentState!
+                      //     .popUntil((route) => route.isFirst);
                     },
                     child: const Text(
                       'Create',
@@ -180,8 +193,6 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       email: widget.email,
       image: image,
     );
-
-    
   }
 
   Future<void> pickImage() async {
@@ -194,9 +205,9 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
       imagePath = image;
     });
   }
-  
+
   Future<String> uploadImage() async {
-    if(imagePath == null){
+    if (imagePath == null) {
       return '';
     }
     final path = 'file/${imagePath!.name}';
@@ -205,7 +216,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
     final ref = FirebaseStorage.instance.ref().child(path);
     final uploadTask = ref.putFile(file);
 
-    final snapshot = await uploadTask.whenComplete((){});
+    final snapshot = await uploadTask.whenComplete(() {});
     final imageDownloadUrl = snapshot.ref.getDownloadURL();
 
     return imageDownloadUrl;

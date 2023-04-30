@@ -48,7 +48,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: <Widget>[
                       kHeight40,
                       Text(
-                        'Create a new account',
+                        'Create a new account',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
@@ -56,6 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const RowTextWidget(text: 'Email'),
                   kHeight10,
                   TextFormFieldWidget(
+                    keyboardType: TextInputType.text,
                     validator: (String? value) {
                       return value != null && !EmailValidator.validate(value)
                           ? 'Enter a valid email'
@@ -69,6 +70,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const RowTextWidget(text: 'Password'),
                   kHeight10,
                   TextFormFieldWidget(
+                    keyboardType: TextInputType.text,
                     obscureText: true,
                     validator: (String? value) {
                       if (value != null && value.length < 6) {
@@ -85,6 +87,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const RowTextWidget(text: 'Confirm Password'),
                   kHeight10,
                   TextFormFieldWidget(
+                    keyboardType: TextInputType.text,
                     obscureText: true,
                     validator: (String? value) {
                       if (value != null && value.length < 6) {
@@ -100,20 +103,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     icon: const Icon(Icons.password_outlined),
                     controller: signUpConfirmPasswordController,
                   ),
-                  // kHeight20,
-                  // const RowTextWidget(text: 'Mobile number'),
-                  // kHeight10,
-                  //  TextFormFieldWidget(
-                  //   hintText: 'Enter your mobile number',
-                  //   icon: const Icon(Icons.mobile_friendly_outlined), text: phoneNumberController,
-                  // ),
                   kHeight20,
                   ElevatedButton(
                     onPressed: () {
                       if (!formKey.currentState!.validate()) {
                         return;
                       }
-                      //signUpUser();
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -125,21 +120,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         ),
                       );
                     },
-                    //onPressed: signUpUser,
-                    // () {
-                    //   FirebaseAuth.instance
-                    //       .createUserWithEmailAndPassword(
-                    //         email: signUpEmailController.text,
-                    //         password: signUpPasswordController.text,
-                    //       )
-                    //       .then((UserCredential value) =>
-                    //           Navigator.of(context).pushReplacement(
-                    //             MaterialPageRoute<StatelessWidget>(
-                    //               builder: (BuildContext context) =>
-                    //                   const LogInScreen(),
-                    //             ),
-                    //           ));
-                    // },
                     child: const Text(
                       'Create',
                     ),

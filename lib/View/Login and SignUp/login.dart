@@ -82,6 +82,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         const RowTextWidget(text: 'Email'),
                         kHeight10,
                         TextFormFieldWidget(
+                          keyboardType: TextInputType.text,
                           validator: (String? value) {
                             return value != null &&
                                     !EmailValidator.validate(value)
@@ -96,6 +97,7 @@ class _LogInScreenState extends State<LogInScreen> {
                         const RowTextWidget(text: 'Password'),
                         kHeight10,
                         TextFormFieldWidget(
+                          keyboardType: TextInputType.text,
                           validator: (String? value) {
                             if (value != null && value.length < 6) {
                               return 'Password requires a minimum 6 characters';
@@ -157,12 +159,12 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                         kHeight40,
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
                               "Don't have an account ?",
                               style: loginDonthaveacnt,
-                            ),
+                            ),kWidth20,
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).push(

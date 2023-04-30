@@ -2,10 +2,8 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:second_project/view/functions/show_dialog_method.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/constants/style/text_style.dart';
-import 'package:second_project/view/widgets/elvated_button_widget.dart';
 import 'package:second_project/view/widgets/text_button_widget.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
 import '../../../model/cart_model.dart';
@@ -34,7 +32,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 160,
+        height: 500,
         child: ListView.separated(
           itemBuilder: (context, index) {
             return Container(

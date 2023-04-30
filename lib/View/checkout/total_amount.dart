@@ -45,7 +45,7 @@ class TotalAmount extends StatelessWidget {
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                   ),
                   Text(
-                    '${amount}',
+                    '₹ ${amount}',
                     style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
                   ),
                 ],
@@ -54,7 +54,7 @@ class TotalAmount extends StatelessWidget {
               Divider(),
               kHeight10,
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
                     'Total',
@@ -63,8 +63,17 @@ class TotalAmount extends StatelessWidget {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
+                  kWidth10,
                   Text(
-                    '${amount + gst}',
+                    '(including 18% GST)',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w300,
+                    ),
+                  ),
+                  kWidth40,
+                  Text(
+                    '₹ ${amount + gst}',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,

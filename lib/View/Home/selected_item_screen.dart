@@ -224,7 +224,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
       decoration: BoxDecoration(
         image: DecorationImage(
           image: NetworkImage(assetImage),
-          fit: BoxFit.cover,
+          fit: BoxFit.contain,
         ),
       ),
     );
@@ -235,7 +235,10 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
       activeIndex: activeIndex,
       count: widget.product.images.length,
       effect: JumpingDotEffect(
-          activeDotColor: kDeepPurple, dotHeight: 10, dotWidth: 15),
+        activeDotColor: kDeepPurple,
+        dotHeight: 10,
+        dotWidth: 15,
+      ),
     );
   }
 }

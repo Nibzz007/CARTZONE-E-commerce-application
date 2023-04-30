@@ -21,7 +21,7 @@ class _BottomNavBarPersistentState extends State<BottomNavBarPersistent> {
     _controller = PersistentTabController();
   }
 
-  List<StatelessWidget> screens = <StatelessWidget>[
+  List<Widget> screens = [
     HomeScreen(),
     BagScreen(
       getQuantity: (p0) {},

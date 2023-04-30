@@ -29,14 +29,14 @@ class PaymentScreen extends StatefulWidget {
 
 class _PaymentScreenState extends State<PaymentScreen> {
   int selectedValue = 0;
-  double amount = 0;
   final user = FirebaseAuth.instance.currentUser!.email;
 
   double getTotal() {
+    double amount = 0;
     for (var item in widget.cartItems) {
-      amount = amount + (item.price * item.itemCount) + widget.gst;
+      amount = amount + (item.price * item.itemCount);
     }
-    return amount;
+    return amount + widget.gst;
   }
 
   Future<void> onPaymentSuccessfull({required String payment}) async {

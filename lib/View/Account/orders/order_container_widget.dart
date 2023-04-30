@@ -3,13 +3,13 @@ import 'package:second_project/view/utils/constants/size/sized_box.dart';
 import 'package:second_project/model/order_moderl.dart';
 
 class OrderContainer extends StatelessWidget {
-  const OrderContainer({
-    super.key,
-    required this.order,
-    required this.delivertStatus,
-    this.isVisible = true,
-    required this.onTap, required this.orderType
-  });
+  const OrderContainer(
+      {super.key,
+      required this.order,
+      required this.delivertStatus,
+      this.isVisible = true,
+      required this.onTap,
+      required this.orderType});
 
   final Orders order;
   final String delivertStatus;
@@ -63,7 +63,7 @@ class OrderContainer extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          '₹ ${order.price.toString()}.00',
+                          '₹ ${order.price}.00',
                           style: TextStyle(
                             fontSize: 15,
                             fontWeight: FontWeight.bold,
@@ -79,7 +79,13 @@ class OrderContainer extends StatelessWidget {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(20),
                                 ),
-                                child: Text(orderType, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),),
+                                child: Text(
+                                  orderType,
+                                  style: TextStyle(
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
                               ),
                             ),
                           ),

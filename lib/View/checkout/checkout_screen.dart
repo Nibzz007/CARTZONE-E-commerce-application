@@ -30,46 +30,48 @@ class CheckoutScreen extends StatelessWidget {
         ),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CheckoutAddress(
-                  callBackAddress: getAddress,
-                ),
-                kHeight10,
-                CheckoutOrder(
-                  cartItems: cartItems,
-                ),
-                kHeight20,
-                Divider(),
-                TotalAmount(
-                  cartItems: cartItems,
-                  gst: gst,
-                ),
-                kHeight20,
-                ElevatedButtonWidget(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: ((context) => PaymentScreen(
-                          address: address,
-                          cartItems: cartItems,
-                          gst: gst,
-                        )),
-                      ),
-                    );
-                  },
-                  text: 'Continue to payment',
-                  color: kDeepPurple,
-                ),
-              ],
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CheckoutAddress(
+                    callBackAddress: getAddress,
+                  ),
+                  kHeight10,
+                  CheckoutOrder(
+                    cartItems: cartItems,
+                  ),
+                  kHeight20,
+                  Divider(),
+                  TotalAmount(
+                    cartItems: cartItems,
+                    gst: gst,
+                  ),
+                  kHeight20,
+                  ElevatedButtonWidget(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => PaymentScreen(
+                            address: address,
+                            cartItems: cartItems,
+                            gst: gst,
+                          )),
+                        ),
+                      );
+                    },
+                    text: 'Continue to payment',
+                    color: kDeepPurple,
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
