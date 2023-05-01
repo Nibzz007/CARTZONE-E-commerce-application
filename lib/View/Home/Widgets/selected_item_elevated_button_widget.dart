@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import '../../../view/utils/constants/style/text_style.dart';
 
@@ -18,7 +19,7 @@ class SelectedItemElevatedButtonWidget extends StatelessWidget {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
         backgroundColor: kDeepPurple,
-        fixedSize: const Size(170, 20),
+        fixedSize: Size(200.w, 30.h),
       ),
       onPressed: onPressed,
       child: Text(

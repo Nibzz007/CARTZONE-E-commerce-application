@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:second_project/view/checkout/checkout_container.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
@@ -47,8 +48,8 @@ class _BagScreenState extends State<BagScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     SizedBox(
-                      height: 150,
-                      width: 150,
+                      height: 150.h,
+                      width: 150.w,
                       child: Lottie.asset(
                         'assets/lottie/33740-sad-empty-box.json',
                       ),
@@ -57,7 +58,7 @@ class _BagScreenState extends State<BagScreen> {
                     Text(
                       'Your cart is empty!',
                       style: TextStyle(
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
                       ),
                     ),

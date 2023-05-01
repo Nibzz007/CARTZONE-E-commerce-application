@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/constants/style/text_style.dart';
@@ -32,11 +33,11 @@ class _MyCartWidgetState extends State<MyCartWidget> {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: SizedBox(
-        height: 500,
+        height: 300.h,
         child: ListView.separated(
           itemBuilder: (context, index) {
             return Container(
-              height: 155,
+              height: 155.h,
               width: double.infinity,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10),
@@ -47,8 +48,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                   Padding(
                     padding: const EdgeInsets.all(10),
                     child: Container(
-                      width: 90,
-                      height: double.infinity,
+                      width: 90.w,
+                      height: double.infinity.h,
                       decoration: BoxDecoration(
                         color: kGrey300,
                         borderRadius: BorderRadius.circular(10),
@@ -70,13 +71,15 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                           widget.cartItems[index].productName,
                           maxLines: 1,
                           style: GoogleFonts.montserrat(
-                              fontSize: 16, fontWeight: FontWeight.w600),
+                            fontSize: 13.5.sp,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                         kHeight10,
                         Text(
                           '₹ ${widget.cartItems[index].price}',
                           style: GoogleFonts.montserrat(
-                              fontSize: 13, fontWeight: FontWeight.w600),
+                              fontSize: 13.sp, fontWeight: FontWeight.w600),
                         ),
                         kHeight10,
                         Row(
@@ -84,8 +87,8 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                             const Text('Quantity'),
                             kWidth10,
                             Container(
-                              height: 30,
-                              width: 30,
+                              height: 30.h,
+                              width: 30.w,
                               decoration: BoxDecoration(
                                 border: Border.all(),
                                 color: kGrey300,
@@ -114,12 +117,12 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                             kWidth10,
                             Text(
                               quantity.toString(),
-                              style: TextStyle(fontSize: 20),
+                              style: TextStyle(fontSize: 20.sp),
                             ),
                             kWidth10,
                             Container(
-                              height: 30,
-                              width: 30,
+                              height: 30.h,
+                              width: 30.w,
                               alignment: Alignment.center,
                               decoration: BoxDecoration(
                                 border: Border.all(),
@@ -149,7 +152,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         Row(
                           children: [
                             SizedBox(
-                              height: 30,
+                              height: 30.h,
                               child: ElevatedButton.icon(
                                 onPressed: () {
                                   showDialog(

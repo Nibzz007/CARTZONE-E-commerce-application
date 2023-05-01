@@ -62,6 +62,9 @@ class _BottomNavBarPersistentState extends State<BottomNavBarPersistent> {
         backgroundColor: Color.fromARGB(163, 255, 255, 255),
         screens: screens,
         items: navBarItems(),
+        hideNavigationBarWhenKeyboardShows: true,
+        resizeToAvoidBottomInset: true,
+        popAllScreensOnTapAnyTabs: true,
         screenTransitionAnimation: const ScreenTransitionAnimation(
           animateTabTransition: true,
         ),

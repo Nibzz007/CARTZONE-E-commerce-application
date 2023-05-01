@@ -1,6 +1,7 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
@@ -63,8 +64,8 @@ class _LogInScreenState extends State<LogInScreen> {
                       children: <Widget>[
                         kHeight10,
                         SizedBox(
-                          height: 150,
-                          width: double.infinity,
+                          height: 150.h,
+                          width: double.infinity.w,
                           child: Lottie.asset(
                             'assets/lottie/111594-login.json',
                           ),
@@ -125,16 +126,14 @@ class _LogInScreenState extends State<LogInScreen> {
                         const Text('Or'),
                         kHeight10,
                         Container(
-                          width: double.infinity,
-                          height: 50,
+                          width: double.infinity.w,
+                          height: 50.h,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                              fixedSize: const Size(250, 40),
-                              backgroundColor: kWhite,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)
-                              )
-                            ),
+                                fixedSize: const Size(250, 40),
+                                backgroundColor: kWhite,
+                                shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20))),
                             icon: const FaIcon(
                               FontAwesomeIcons.google,
                               color: Colors.red,
@@ -151,20 +150,23 @@ class _LogInScreenState extends State<LogInScreen> {
                               'Sign in With Google',
                               style: TextStyle(
                                 color: kBlack,
-                                fontSize: 19,
+                                fontSize: 19.sp,
                                 fontWeight: FontWeight.w600,
                               ),
                             ),
                           ),
                         ),
-                        kHeight40,
+                        kHeight20,
                         Row(
                           //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
                               "Don't have an account ?",
                               style: loginDonthaveacnt,
-                            ),kWidth20,
+                            ),
+                            SizedBox(
+                              width: 20.w,
+                            ),
                             TextButton(
                               onPressed: () {
                                 Navigator.of(context).push(
@@ -174,8 +176,9 @@ class _LogInScreenState extends State<LogInScreen> {
                                   ),
                                 );
                               },
-                              child: const Text(
+                              child: Text(
                                 'Create a new account',
+                                style: TextStyle(fontSize: 12.sp),
                               ),
                             ),
                           ],
@@ -205,7 +208,7 @@ class _LogInScreenState extends State<LogInScreen> {
         password: passwordController.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      showSnackBar(context, 'E-mail or Password is incorrect',Colors.red);
+      showSnackBar(context, 'E-mail or Password is incorrect', Colors.red);
     }
     navigatorKey.currentState!
         .popUntil((Route<dynamic> route) => route.isFirst);

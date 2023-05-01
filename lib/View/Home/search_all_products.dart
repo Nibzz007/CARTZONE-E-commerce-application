@@ -47,6 +47,7 @@ class _SearchScreenState extends State<SearchScreen> {
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextFormFieldWidget(
                 keyboardType: TextInputType.text,
@@ -58,10 +59,9 @@ class _SearchScreenState extends State<SearchScreen> {
               ),
               kHeight20,
               (searchProductList!.isEmpty)
-                  ? Expanded(
-                      child: Center(
-                      child: Text('No products'),
-                    ))
+                  ? Center(
+                  child: Text('No products'),
+                    )
                   : GridView.builder(
                       shrinkWrap: true,
                       physics: ScrollPhysics(),

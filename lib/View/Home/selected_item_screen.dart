@@ -42,14 +42,6 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: <Widget>[
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite_outline,
-            ),
-          ),
-        ],
       ),
       body: SingleChildScrollView(
         child: Padding(

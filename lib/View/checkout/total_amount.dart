@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:second_project/model/cart_model.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/constants/size/sized_box.dart';
@@ -23,8 +24,8 @@ class TotalAmount extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Container(
-        width: double.infinity,
-        height: 150,
+        width: double.infinity.w,
+        height: 150.h,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
           border: Border.all(
@@ -42,11 +43,11 @@ class TotalAmount extends StatelessWidget {
                 children: [
                   Text(
                     'Amount',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
                   ),
                   Text(
                     '₹ ${amount}',
-                    style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 15.sp, fontWeight: FontWeight.w400),
                   ),
                 ],
               ),
@@ -59,24 +60,24 @@ class TotalAmount extends StatelessWidget {
                   Text(
                     'Total',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 18.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   kWidth10,
                   Text(
-                    '(including 18% GST)',
+                    '( + 18% GST)',
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w300,
                     ),
                   ),
-                  kWidth40,
+                  kWidth60,
                   Text(
                     '₹ ${amount + gst}',
                     style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w400,
+                      fontSize: 15.sp,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
                 ],

@@ -33,7 +33,7 @@ class TextFormFieldWidget extends StatelessWidget {
         obscureText: obscureText,
         decoration: InputDecoration(
           prefixIcon: icon,
-          prefixIconColor: kWhite,
+          prefixIconColor: kBlack38,
           focusedBorder: OutlineInputBorder(
             borderRadius: BorderRadius.circular(10),
             borderSide: BorderSide(color: kDeepPurple, width: 2),

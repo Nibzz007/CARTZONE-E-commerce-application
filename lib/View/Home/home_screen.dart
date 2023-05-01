@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:second_project/model/product_model.dart';
 import 'package:second_project/view/Home/Widgets/home_grid_view.dart';
 import 'package:second_project/view/home/search_all_products.dart';
@@ -15,8 +17,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        elevation: 10,
+          centerTitle: true,
+          elevation: 10,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(15),
@@ -27,7 +29,9 @@ class HomeScreen extends StatelessWidget {
           title: Text(
             'CARTZONE',
             style: GoogleFonts.eczar(
-                fontSize: 26, fontWeight: FontWeight.w500, letterSpacing: 10),
+                fontSize: 26.sp,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 10),
           )),
       body: SafeArea(
         child: Padding(
@@ -40,22 +44,30 @@ class HomeScreen extends StatelessWidget {
                   onTap: (() async {
                     List<Product> allProductsList =
                         await Product.getProducts().first;
-                    Navigator.push(
+                    PersistentNavBarNavigator.pushNewScreen(
                       context,
-                      MaterialPageRoute(
-                        builder: ((context) => SearchScreen(
-                              allProductsList: allProductsList,
-                            )),
+                      screen: SearchScreen(
+                        allProductsList: allProductsList,
                       ),
+                      withNavBar: false,
                     );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: ((context) => SearchScreen(
+                    //           allProductsList: allProductsList,
+                    //         )),
+                    //   ),
+                    // );
                   }),
                   child: Container(
                     width: double.infinity,
                     height: 36,
                     decoration: BoxDecoration(
-                        border: Border.all(width: 0.2),
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.grey.shade300),
+                      border: Border.all(width: 0.2),
+                      borderRadius: BorderRadius.circular(10),
+                      color: Colors.grey.shade300,
+                    ),
                     child: Row(
                       children: [
                         kWidth10,
@@ -66,7 +78,9 @@ class HomeScreen extends StatelessWidget {
                         Text(
                           'Search for products',
                           style: TextStyle(
-                              fontWeight: FontWeight.w200, fontSize: 16),
+                            fontWeight: FontWeight.w200,
+                            fontSize: 16.sp,
+                          ),
                         ),
                       ],
                     ),

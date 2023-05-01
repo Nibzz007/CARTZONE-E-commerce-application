@@ -1,7 +1,10 @@
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:lottie/lottie.dart';
 import 'package:second_project/view/Login%20and%20SignUp/user_details.dart';
+import 'package:second_project/view/utils/colours/colours.dart';
+import 'package:second_project/view/widgets/elvated_button_widget.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
 import '../Widgets/row_text_widget.dart';
 import '../Widgets/text_form_field_widget.dart';
@@ -36,8 +39,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               child: Column(
                 children: <Widget>[
                   SizedBox(
-                    height: 200,
-                    width: double.infinity,
+                    height: 200.h,
+                    width: double.infinity.w,
                     child: Lottie.asset(
                       'assets/lottie/28497-profile-icon.json',
                       fit: BoxFit.contain,
@@ -48,7 +51,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     children: <Widget>[
                       kHeight40,
                       Text(
-                        'Create a new account',style: TextStyle(fontSize: 18,fontWeight: FontWeight.bold),
+                        'Create a new account',
+                        style: TextStyle(
+                          fontSize: 18.sp,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ],
                   ),
@@ -104,7 +111,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     controller: signUpConfirmPasswordController,
                   ),
                   kHeight20,
-                  ElevatedButton(
+                  ElevatedButtonWidget(
                     onPressed: () {
                       if (!formKey.currentState!.validate()) {
                         return;
@@ -113,17 +120,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         context,
                         MaterialPageRoute(
                           builder: ((context) => UserDetailsScreen(
-                            email: signUpEmailController.text.trim().toLowerCase(),
-                            password: signUpPasswordController.text.trim(),
-                          )
-                          ),
+                                email: signUpEmailController.text
+                                    .trim()
+                                    .toLowerCase(),
+                                password: signUpPasswordController.text.trim(),
+                              )),
                         ),
                       );
                     },
-                    child: const Text(
-                      'Create',
-                    ),
+                    text: 'Create',
+                    color: kBlack,
                   ),
+                  // SizedBox(
+                  //   width: double.infinity,
+                  //   height: 50,
+                  //   child: ElevatedButton(
+                  //     style: ElevatedButton.styleFrom(
+                  //       backgroundColor: kDeepPurple,
+                  //       shape: RoundedRectangleBorder(
+                  //         borderRadius: BorderRadius.circular(20)
+                  //       )
+                  //     ),
+                  // onPressed: () {
+                  //   if (!formKey.currentState!.validate()) {
+                  //     return;
+                  //   }
+                  //   Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: ((context) => UserDetailsScreen(
+                  //         email: signUpEmailController.text.trim().toLowerCase(),
+                  //         password: signUpPasswordController.text.trim(),
+                  //       )
+                  //       ),
+                  //     ),
+                  //   );
+                  // },
+                  //     child: Text(
+                  //       'Create',
+                  //       style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+                  //     ),
+                  //   ),
+                  // ),
                 ],
               ),
             ),

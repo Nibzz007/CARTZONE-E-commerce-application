@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'model/google_sign_in.dart';
 import 'view/splash/splash_screen.dart';
@@ -21,13 +22,19 @@ class MyApp extends StatelessWidget {
       create: (BuildContext context) {
         return GoogleSignInProvider();
       },
-      child: MaterialApp(
-        theme: ThemeData(
-          appBarTheme: AppBarTheme(backgroundColor: Colors.deepPurple),
-        ),
-        navigatorKey: navigatorKey,
-        debugShowCheckedModeBanner: false,
-        home: SplashScreen(),
+      child: ScreenUtilInit(
+        useInheritedMediaQuery: true,
+        designSize: Size(360, 690),
+        builder: (_, child) {
+          return MaterialApp(
+          theme: ThemeData(
+            appBarTheme: AppBarTheme(backgroundColor: Colors.deepPurple),
+          ),
+          navigatorKey: navigatorKey,
+          debugShowCheckedModeBanner: false,
+          home: SplashScreen(),
+        );
+        },
       ),
     );
   }

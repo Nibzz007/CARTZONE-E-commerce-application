@@ -20,9 +20,14 @@ class SuccessfulScreen extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                Text(
-                  'Order successful',
-                  style: loginStyle,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Text(
+                      'Order successful',
+                      style: successStyle,
+                    ),
+                  ],
                 ),
                 kHeight20,
                 Text(
