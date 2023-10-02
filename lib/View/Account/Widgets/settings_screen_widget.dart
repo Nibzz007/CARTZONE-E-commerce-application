@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_html/flutter_html.dart';
 import '../../utils/texts/privacy_policy.dart';
 import '../../utils/texts/terms_and_conditions.dart';
 
@@ -23,9 +22,6 @@ class SettingsScreenWidget extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(10),
-        child: Html(
-          data: screenContent,
-        ),
       ),
     );
   }

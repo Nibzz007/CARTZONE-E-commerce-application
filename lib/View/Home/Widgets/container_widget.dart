@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/main.dart';
 import 'package:second_project/model/product_model.dart';
 import 'package:second_project/model/wishlist_model.dart';
@@ -20,7 +19,7 @@ class ContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
@@ -68,7 +67,7 @@ class ContainerWidget extends StatelessWidget {
                               );
                             } else if (snapshot.hasData) {
                               final wishlist = snapshot.data;
-                              return GestureDetector(
+                              return InkWell(
                                 onTap: () async {
                                   showDialog(
                                     context: context,
@@ -137,7 +136,7 @@ class ContainerWidget extends StatelessWidget {
                   child: Text(
                     product.productName,
                     maxLines: 1,
-                    style: GoogleFonts.montserrat(
+                    style: TextStyle(
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
                     ),
@@ -157,7 +156,7 @@ class ContainerWidget extends StatelessWidget {
                     child: Text(
                       '₹ ${product.price}',
                       textAlign: TextAlign.start,
-                      style: GoogleFonts.montserrat(
+                      style: TextStyle(
                         fontSize: 13,
                         fontWeight: FontWeight.w600,
                       ),

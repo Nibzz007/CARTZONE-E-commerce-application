@@ -76,7 +76,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                       Positioned(
                         bottom: 10,
                         right: 0,
-                        child: GestureDetector(
+                        child: InkWell(
                           onTap: () {
                             pickImage();
                           },

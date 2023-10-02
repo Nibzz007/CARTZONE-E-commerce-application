@@ -130,10 +130,12 @@ class _LogInScreenState extends State<LogInScreen> {
                           height: 50.h,
                           child: ElevatedButton.icon(
                             style: ElevatedButton.styleFrom(
-                                fixedSize: const Size(250, 40),
-                                backgroundColor: kWhite,
-                                shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(20))),
+                              fixedSize: const Size(250, 40),
+                              backgroundColor: kWhite,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
                             icon: const FaIcon(
                               FontAwesomeIcons.google,
                               color: Colors.red,
@@ -158,7 +160,6 @@ class _LogInScreenState extends State<LogInScreen> {
                         ),
                         kHeight20,
                         Row(
-                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Text(
                               "Don't have an account ?",

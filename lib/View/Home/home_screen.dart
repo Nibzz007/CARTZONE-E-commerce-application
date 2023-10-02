@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 import 'package:second_project/model/product_model.dart';
 import 'package:second_project/view/Home/Widgets/home_grid_view.dart';
@@ -28,7 +27,7 @@ class HomeScreen extends StatelessWidget {
           toolbarHeight: 70,
           title: Text(
             'CARTZONE',
-            style: GoogleFonts.eczar(
+            style: TextStyle(
                 fontSize: 26.sp,
                 fontWeight: FontWeight.w500,
                 letterSpacing: 10),
@@ -40,7 +39,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               children: [
                 kHeight20,
-                GestureDetector(
+                InkWell(
                   onTap: (() async {
                     List<Product> allProductsList =
                         await Product.getProducts().first;

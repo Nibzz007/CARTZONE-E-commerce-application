@@ -1,36 +1,35 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 
 //Login screen
 
-TextStyle loginStyle = GoogleFonts.montserrat(
+TextStyle loginStyle = TextStyle(
   fontSize: 40.sp,
   fontWeight: FontWeight.w700,
 );
-TextStyle loginSubStyle = GoogleFonts.montserrat(
+TextStyle loginSubStyle = TextStyle(
   fontSize: 15.sp,
   fontWeight: FontWeight.w500,
 );
-TextStyle loginDonthaveacnt = GoogleFonts.montserrat(
+TextStyle loginDonthaveacnt = TextStyle(
   fontSize: 12.sp,
   fontWeight: FontWeight.w500,
 );
 // Order successfull text
 
-TextStyle successStyle = GoogleFonts.montserrat(
+TextStyle successStyle = TextStyle(
   fontSize: 30.sp,
   fontWeight: FontWeight.w700,
 );
 
 //Elevated button text style
 
-TextStyle elvatedButtonTextStyle = GoogleFonts.montserrat(
+TextStyle elvatedButtonTextStyle = TextStyle(
   fontSize: 19.sp,
   fontWeight: FontWeight.w600,
 );
- TextStyle elvatedTextStyle = GoogleFonts.montserrat(
+ TextStyle elvatedTextStyle = TextStyle(
   fontSize: 15.sp,
   fontWeight: FontWeight.w700,
   color: kWhite
@@ -39,14 +38,14 @@ TextStyle elvatedButtonTextStyle = GoogleFonts.montserrat(
 
 //Signup screen
 
-TextStyle signupStyle = GoogleFonts.montserrat(
+TextStyle signupStyle = TextStyle(
   fontSize: 30.sp,
   fontWeight: FontWeight.w700,
 );
 
 //Home Screen
 
-TextStyle categoryStyle = GoogleFonts.montserrat(
+TextStyle categoryStyle = TextStyle(
   fontSize: 20.sp,
   fontWeight: FontWeight.w700,
 );
@@ -54,33 +53,33 @@ TextStyle categoryStyle = GoogleFonts.montserrat(
 
 //Appbar title style
 
-TextStyle appBarTitleStyle = GoogleFonts.montserrat(
+TextStyle appBarTitleStyle = TextStyle(
   fontSize: 30.sp,
   fontWeight: FontWeight.w700,
 );
 
 //Wishlist screen
 
-TextStyle wishlistTitleStyle = GoogleFonts.montserrat(
+TextStyle wishlistTitleStyle = TextStyle(
   fontSize: 20.sp,
   fontWeight: FontWeight.w600,
 );
 
 //Account screen
 
-TextStyle nameStyle = GoogleFonts.montserrat(
+TextStyle nameStyle = TextStyle(
   fontSize: 25.sp,
   fontWeight: FontWeight.w600,
 );
 
-TextStyle listStyle = GoogleFonts.montserrat(
+TextStyle listStyle = TextStyle(
   fontSize: 16.sp,
   fontWeight: FontWeight.w500,
 );
 
 //ShowDialog 
 
-TextStyle confirmationTextStyle = GoogleFonts.montserrat(
+TextStyle confirmationTextStyle = TextStyle(
   fontSize: 16.sp,
   fontWeight: FontWeight.w500,
   color: kWhite
@@ -88,7 +87,7 @@ TextStyle confirmationTextStyle = GoogleFonts.montserrat(
 
 //My Cart
 
-TextStyle myCartSubtitileStyle = GoogleFonts.montserrat(
+TextStyle myCartSubtitileStyle = TextStyle(
   fontSize: 16.sp,
   fontWeight: FontWeight.w600,
   color: kBlack
@@ -96,13 +95,13 @@ TextStyle myCartSubtitileStyle = GoogleFonts.montserrat(
 
 //Checkout
 
-TextStyle checkOutHeadStyle = GoogleFonts.montserrat(
+TextStyle checkOutHeadStyle = TextStyle(
   fontSize: 18.sp,
   fontWeight: FontWeight.w600,
   color: kBlack
 );
 
-TextStyle checkOutAddressStyle = GoogleFonts.montserrat(
+TextStyle checkOutAddressStyle = TextStyle(
   fontSize: 16.sp,
   fontWeight: FontWeight.w400,
   color: kBlack
@@ -110,7 +109,7 @@ TextStyle checkOutAddressStyle = GoogleFonts.montserrat(
 
 //Selected item
 
-TextStyle priceStyle = GoogleFonts.montserrat(
+TextStyle priceStyle = TextStyle(
   fontSize: 16.sp,
   fontWeight: FontWeight.w700,
   color: kBlack,

@@ -1,7 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/main.dart';
 import 'package:second_project/model/cart_model.dart';
 import 'package:second_project/model/product_model.dart';
@@ -84,7 +83,7 @@ class _SelectedItemScreenState extends State<SelectedItemScreen> {
                 kHeight20,
                 Text(
                   widget.product.productName,
-                  style: GoogleFonts.montserrat(
+                  style: TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.w600,
                   ),

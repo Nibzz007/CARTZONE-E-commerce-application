@@ -73,7 +73,7 @@ class OrderContainer extends StatelessWidget {
                           padding: const EdgeInsets.all(8.0),
                           child: Visibility(
                             visible: isVisible,
-                            child: GestureDetector(
+                            child: InkWell(
                               onTap: onTap,
                               child: Container(
                                 decoration: BoxDecoration(

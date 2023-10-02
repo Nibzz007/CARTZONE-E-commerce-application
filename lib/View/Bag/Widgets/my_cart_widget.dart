@@ -2,7 +2,6 @@ import 'dart:developer';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/constants/style/text_style.dart';
 import 'package:second_project/view/widgets/text_button_widget.dart';
@@ -70,7 +69,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         Text(
                           widget.cartItems[index].productName,
                           maxLines: 1,
-                          style: GoogleFonts.montserrat(
+                          style: TextStyle(
                             fontSize: 13.5.sp,
                             fontWeight: FontWeight.w600,
                           ),
@@ -78,7 +77,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                         kHeight10,
                         Text(
                           '₹ ${widget.cartItems[index].price}',
-                          style: GoogleFonts.montserrat(
+                          style: TextStyle(
                               fontSize: 13.sp, fontWeight: FontWeight.w600),
                         ),
                         kHeight10,
@@ -97,7 +96,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                               child: Center(
                                 child: quantity < 2
                                     ? Icon(Icons.remove)
-                                    : GestureDetector(
+                                    : InkWell(
                                         onTap: () {
                                           setState(() {
                                             quantity = quantity - 1;
@@ -130,7 +129,7 @@ class _MyCartWidgetState extends State<MyCartWidget> {
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
-                                child: GestureDetector(
+                                child: InkWell(
                                   onTap: () {
                                     setState(() {
                                       quantity = quantity + 1;

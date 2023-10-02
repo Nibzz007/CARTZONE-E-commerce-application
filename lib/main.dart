@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       },
       child: ScreenUtilInit(
         useInheritedMediaQuery: true,
-        designSize: Size(360, 690),
+        designSize: Size(390, 690), 
         builder: (_, child) {
           return MaterialApp(
           theme: ThemeData(

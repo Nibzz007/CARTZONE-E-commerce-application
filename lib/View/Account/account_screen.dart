@@ -1,6 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:second_project/model/user_model.dart';
 import 'package:second_project/view/account/orders/order_screen.dart';
@@ -114,50 +113,52 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
               ),
-              ListTileWidget(
-                icon: const Icon(Icons.share_rounded),
-                title: Text(
-                  'Share',
-                  style: listStyle,
-                ),
-                onPress: () async {
-                  await Share.share(
-                      'Download CARTZONE from Playstore For Free \nWith CARTZONE you purchase mobile phones, tablets and laptops of various brands. Download Now On Playstore');
-                },
-              ),
-              ListTileWidget(
-                icon: const Icon(Icons.security_rounded),
-                title: Text(
-                  'Privacy policy',
-                  style: listStyle,
-                ),
-                onPress: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: ((context) =>
-                          SettingsScreenWidget(screenName: 'Privacy Policy')),
-                    ),
-                  );
-                },
-              ),
-              ListTileWidget(
-                icon: const Icon(Icons.policy_rounded),
-                title: Text(
-                  'Terms and conditions',
-                  style: listStyle,
-                ),
-                onPress: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: ((context) => SettingsScreenWidget(
-                          screenName: 'Terms And Conditions')
-                        ),
-                    ),
-                  );
-                },
-              ),
+              // ListTileWidget(
+              //   icon: const Icon(Icons.share_rounded),
+              //   title: Text(
+              //     'Share',
+              //     style: listStyle,
+              //   ),
+              //   onPress: () async {
+              //     await Share.share(
+              //         'Download CARTZONE from Playstore For Free \nWith CARTZONE you purchase mobile phones, tablets and laptops of various brands. Download Now On Playstore');
+              //   },
+              // ),
+              // ListTileWidget(
+              //   icon: const Icon(Icons.security_rounded),
+              //   title: Text(
+              //     'Privacy policy',
+              //     style: listStyle,
+              //   ),
+              //   onPress: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: ((context) => SettingsScreenWidget(
+              //               screenName: 'Privacy Policy',
+              //             )
+              //           ),
+              //       ),
+              //     );
+              //   },
+              // ),
+              // ListTileWidget(
+              //   icon: const Icon(Icons.policy_rounded),
+              //   title: Text(
+              //     'Terms and conditions',
+              //     style: listStyle,
+              //   ),
+              //   onPress: () {
+              //     Navigator.push(
+              //       context,
+              //       MaterialPageRoute(
+              //         builder: ((context) => SettingsScreenWidget(
+              //               screenName: 'Terms And Conditions',
+              //             )),
+              //       ),
+              //     );
+              //   },
+              // ),
               ListTileWidget(
                 icon: const Icon(Icons.logout_rounded),
                 title: Text(
@@ -181,7 +182,7 @@ class ProfileScreen extends StatelessWidget {
               kHeight20,
               Text(
                 'Version 1.0.0',
-                style: GoogleFonts.montserrat(
+                style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w600,
                   letterSpacing: 2,

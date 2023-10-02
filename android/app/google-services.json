@@ -7,6 +7,35 @@
   "client": [
     {
       "client_info": {
+        "mobilesdk_app_id": "1:41236415992:android:5d1c702776be5bb438020d",
+        "android_client_info": {
+          "package_name": "com.example.admin_app_second_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "41236415992-q2hgldj8sbgva91p3bmkbil1kq7sfpi0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPnOfnf5NM012ZTIdT7Dr0EjiNq4jU_Ho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "41236415992-10b0c16leegtce9ukcuigph0h1kpe8bf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
         "mobilesdk_app_id": "1:41236415992:android:7a0e8e010d4b076638020d",
         "android_client_info": {
           "package_name": "com.example.second_project"
@@ -14,7 +43,31 @@
       },
       "oauth_client": [
         {
-          "client_id": "41236415992-10b0c16leegtce9ukcuigph0h1kpe8bf.apps.googleusercontent.com",
+          "client_id": "41236415992-g68jd48phqm8bcmc9h4h90ureso2e6so.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.second_project",
+            "certificate_hash": "9a0798c9dc8b273c62612efcf9ed9b17592aacc1"
+          }
+        },
+        {
+          "client_id": "41236415992-onpmtl19dcqtualfs4o998o3ejd7tlf1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.second_project",
+            "certificate_hash": "7787d164a3073eca745c5540eb399ee4a745adcb"
+          }
+        },
+        {
+          "client_id": "41236415992-vt55kqpj39r2ujgg5a7fqigbahc5hodl.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.second_project",
+            "certificate_hash": "098a095a098aee31604db544f79600b7dc6201e2"
+          }
+        },
+        {
+          "client_id": "41236415992-q2hgldj8sbgva91p3bmkbil1kq7sfpi0.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

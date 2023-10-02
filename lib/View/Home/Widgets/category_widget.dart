@@ -22,7 +22,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 5),
-      child: GestureDetector(
+      child: InkWell(
         onTap: () {
           Navigator.of(context).push(
             MaterialPageRoute(

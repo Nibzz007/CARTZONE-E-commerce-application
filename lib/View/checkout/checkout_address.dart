@@ -97,7 +97,7 @@ class CheckoutAddress extends StatelessWidget {
                               subtitle: Text(address.addressDetails),
                             ),
                             Divider(thickness: 0.8),
-                            GestureDetector(
+                            InkWell(
                               onTap: (() async {
                                 final addressName =
                                     await Navigator.of(context).push(

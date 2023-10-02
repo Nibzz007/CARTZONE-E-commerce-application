@@ -22,7 +22,7 @@ class FirebaseAuthMethods {
           .then(
             (UserCredential value) => Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute<dynamic>(
-                builder: (BuildContext context) => const LogInScreen()
+                builder: (BuildContext context) => const LogInScreen(),
               ),
               (Route<dynamic> route) => false,
             ),
