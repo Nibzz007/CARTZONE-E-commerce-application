@@ -167,7 +167,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                   onPressed: () async {
                     double amount = getTotal();
                     var options = {
-                      'key': 'rzp_test_KU23KTlBsW4QHc',
+                      'key': '',
                       'amount': amount * 100,
                       'name': 'CARTZONE Pvt.Ltd',
                       'description': 'Demo ',

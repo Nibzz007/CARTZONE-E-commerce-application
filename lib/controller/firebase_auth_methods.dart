@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:second_project/view/utils/show_snack_bar.dart';
-
 import '../View/Login and SignUp/login.dart';
 
 class FirebaseAuthMethods {
@@ -22,7 +21,7 @@ class FirebaseAuthMethods {
           .then(
             (UserCredential value) => Navigator.of(context).pushAndRemoveUntil(
               MaterialPageRoute<dynamic>(
-                builder: (BuildContext context) => const LogInScreen(),
+                builder: (BuildContext context) => const LogInScreen()
               ),
               (Route<dynamic> route) => false,
             ),

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../view/utils/constants/style/text_style.dart';
+import '../utils/constants/style/text_style.dart';
 
 class RowTextWidget extends StatelessWidget {
   const RowTextWidget({

@@ -172,6 +172,7 @@ class _AddressFormState extends State<AddressForm> {
                       addressName: fullNameController.text,
                       addressDetails: addressDetails,
                     );
+                    Navigator.pop(context);
                   },
                   text: 'Add',
                 ),

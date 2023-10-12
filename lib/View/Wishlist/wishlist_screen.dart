@@ -3,9 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:second_project/model/wishlist_model.dart';
 import 'package:second_project/view/Home/selected_item_screen.dart';
+import 'package:second_project/view/utils/constants/size/sized_box.dart';
 import '../../View/Widgets/text_button_widget.dart';
-import '../../view/utils/colours/colours.dart';
-import '../../view/utils/constants/style/text_style.dart';
+import '../utils/colours/colours.dart';
+import '../utils/constants/style/text_style.dart';
 
 class WishlistScreen extends StatelessWidget {
   WishlistScreen({
@@ -58,88 +59,98 @@ class WishlistScreen extends StatelessWidget {
             } else {
               return Container(
                 child: ListView.separated(
+                  padding: EdgeInsets.all(5),
                   itemBuilder: (BuildContext context, int index) {
                     return ListTile(
-                        onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: ((context) =>
-                                  SelectedItemScreen(product: wishlist[index])),
-                            ),
-                          );
-                        },
-                        leading: CircleAvatar(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(width: 0.5),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: ((context) =>
+                                SelectedItemScreen(product: wishlist[index])),
+                          ),
+                        );
+                      },
+                      leading: CircleAvatar(
+                        backgroundColor: kBlack,
+                        radius: 60,
+                        child: CircleAvatar(
                           backgroundImage: NetworkImage(
                             wishlist[index].images[0],
                           ),
                           radius: 40,
                         ),
-                        title: Text(
-                          wishlist[index].productName,
-                          style: wishlistTitleStyle,
-                          maxLines: 1,
+                      ),
+                      title: Text(
+                        wishlist[index].productName,
+                        style: wishlistTitleStyle,
+                        maxLines: 1,
+                      ),
+                      subtitle: Text(
+                        '₹ ${wishlist[index].price}',
+                        style: TextStyle(
+                          fontSize: 15,
+                          color: kBlue,
                         ),
-                        subtitle: Text(
-                          '₹ ${wishlist[index].price}',
-                          style: TextStyle(
-                            fontSize: 15,
-                            color: kBlue,
-                          ),
+                      ),
+                      trailing: IconButton(
+                        onPressed: () async {
+                          showDialog(
+                            context: context,
+                            builder: ((context) {
+                              return AlertDialog(
+                                backgroundColor: kDeepPurple,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
+                                title: Text(
+                                  'Remove from wishlist',
+                                  style: TextStyle(color: kWhite),
+                                ),
+                                content: Text(
+                                  'Do you want to remove the item from wishlist',
+                                  style: TextStyle(color: kWhite),
+                                ),
+                                actions: [
+                                  TextButtonWidget(
+                                    onPressed: () {
+                                      Navigator.pop(context);
+                                    },
+                                    text: Text(
+                                      'No',
+                                      style: confirmationTextStyle,
+                                    ),
+                                  ),
+                                  TextButtonWidget(
+                                    onPressed: () {
+                                      WishList.deleteFromWishlist(
+                                        user!,
+                                        wishlist[index],
+                                      );
+                                      Navigator.pop(context);
+                                    },
+                                    text: Text(
+                                      'Yes',
+                                      style: confirmationTextStyle,
+                                    ),
+                                  ),
+                                ],
+                              );
+                            }),
+                          );
+                        },
+                        icon: const Icon(
+                          Icons.delete,
                         ),
-                        trailing: IconButton(
-                          onPressed: () async {
-                            showDialog(
-                              context: context,
-                              builder: ((context) {
-                                return AlertDialog(
-                                  backgroundColor: kDeepPurple,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(10),
-                                  ),
-                                  title: Text(
-                                    'Remove from wishlist',
-                                    style: TextStyle(color: kWhite),
-                                  ),
-                                  content: Text(
-                                    'Do you want to remove the item from wishlist',
-                                    style: TextStyle(color: kWhite),
-                                  ),
-                                  actions: [
-                                    TextButtonWidget(
-                                      onPressed: () {
-                                        Navigator.pop(context);
-                                      },
-                                      text: Text(
-                                        'No',
-                                        style: confirmationTextStyle,
-                                      ),
-                                    ),
-                                    TextButtonWidget(
-                                      onPressed: () {
-                                        WishList.deleteFromWishlist(
-                                          user!,
-                                          wishlist[index],
-                                        );
-                                        Navigator.pop(context);
-                                      },
-                                      text: Text(
-                                        'Yes',
-                                        style: confirmationTextStyle,
-                                      ),
-                                    ),
-                                  ],
-                                );
-                              }),
-                            );
-                          },
-                          icon: const Icon(
-                            Icons.delete,
-                          ),
-                        ));
+                      ),
+                    );
                   },
                   separatorBuilder: (BuildContext context, int index) {
-                    return const Divider();
+                    return kHeight5;
                   },
                   itemCount: wishlist.length,
                 ),

@@ -4,7 +4,6 @@ import 'package:second_project/model/address_model.dart';
 import 'package:second_project/view/account/address/address_form.dart';
 import 'package:second_project/view/utils/constants/size/sized_box.dart';
 import 'package:second_project/view/widgets/elvated_button_widget.dart';
-
 import '../../View/utils/colours/colours.dart';
 
 class ShippingAddress extends StatefulWidget {
@@ -52,9 +51,8 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                   return Container(
                                     height: 100,
                                     decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      border: Border.all()
-                                    ),
+                                        borderRadius: BorderRadius.circular(10),
+                                        border: Border.all()),
                                     child: Center(
                                       child: ListTile(
                                         leading: CircleAvatar(
@@ -65,15 +63,17 @@ class _ShippingAddressState extends State<ShippingAddress> {
                                             color: kDeepPurple,
                                           ),
                                         ),
-                                        title: Text(addressList[index].addressName),
-                                        subtitle:
-                                            Text(addressList[index].addressDetails),
+                                        title: Text(
+                                            addressList[index].addressName),
+                                        subtitle: Text(
+                                            addressList[index].addressDetails),
                                         trailing: Radio(
                                             fillColor:
                                                 MaterialStateColor.resolveWith(
                                               (states) => kDeepPurple,
                                             ),
-                                            value: addressList[index].addressName,
+                                            value:
+                                                addressList[index].addressName,
                                             groupValue: selectedValue,
                                             onChanged: (value) {
                                               setState(() {
@@ -93,6 +93,7 @@ class _ShippingAddressState extends State<ShippingAddress> {
                               ElevatedButtonWidget(
                                 onPressed: () {
                                   Navigator.pop(context, selectedValue);
+                                  setState(() {});
                                 },
                                 text: 'Apply',
                                 color: kDeepPurple,

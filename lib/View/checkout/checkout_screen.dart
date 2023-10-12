@@ -11,7 +11,11 @@ import 'package:second_project/view/widgets/elvated_button_widget.dart';
 import '../../model/cart_model.dart';
 
 class CheckoutScreen extends StatelessWidget {
-  CheckoutScreen({super.key, required this.cartItems, required this.gst});
+  CheckoutScreen({
+    super.key,
+    required this.cartItems,
+    required this.gst,
+  });
 
   final List<Cart> cartItems;
   final double gst;
@@ -58,10 +62,10 @@ class CheckoutScreen extends StatelessWidget {
                         context,
                         MaterialPageRoute(
                           builder: ((context) => PaymentScreen(
-                            address: address,
-                            cartItems: cartItems,
-                            gst: gst,
-                          )),
+                                address: address,
+                                cartItems: cartItems,
+                                gst: gst,
+                              )),
                         ),
                       );
                     },

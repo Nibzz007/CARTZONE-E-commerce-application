@@ -3,14 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:second_project/model/user_model.dart';
 import 'package:second_project/view/account/orders/order_screen.dart';
-import 'package:second_project/view/account/widgets/settings_screen_widget.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:share_plus/share_plus.dart';
 import '../../../view/utils/constants/size/sized_box.dart';
 import '../../../view/utils/constants/style/text_style.dart';
 import '../../View/Widgets/text_button_widget.dart';
-import '../../model/google_sign_in.dart';
-import '../Functions/show_dialog_method.dart';
+import '../../controller/google_sign_in.dart';
+//import '../../model/google_sign_in.dart';
 import 'widgets/circle_avatar_widget.dart';
 import 'widgets/listtile_widget.dart';
 import 'my_account_tile.dart';
@@ -57,16 +56,19 @@ class ProfileScreen extends StatelessWidget {
                         ),
                         kHeight20,
                         Text(
-                          user.firstName + ' ' + user.lastName,
+                          user.firstName.toUpperCase() +
+                              ' ' +
+                              user.lastName.toUpperCase(),
                           style: nameStyle,
                         ),
                         kHeight20,
                         ListTileWidget(
                           icon: const Icon(Icons.account_circle),
-                          title: const Text('My Account'),
+                          title: Text('My Account',style: listStyle,),
                           onPress: () async {
                             final user = await UserModel.getCurrentUserData(
-                                email: userEmail!);
+                              email: userEmail!,
+                            );
                             Navigator.push(
                               context,
                               MaterialPageRoute<StatelessWidget>(
@@ -113,17 +115,17 @@ class ProfileScreen extends StatelessWidget {
                   );
                 },
               ),
-              // ListTileWidget(
-              //   icon: const Icon(Icons.share_rounded),
-              //   title: Text(
-              //     'Share',
-              //     style: listStyle,
-              //   ),
-              //   onPress: () async {
-              //     await Share.share(
-              //         'Download CARTZONE from Playstore For Free \nWith CARTZONE you purchase mobile phones, tablets and laptops of various brands. Download Now On Playstore');
-              //   },
-              // ),
+              ListTileWidget(
+                icon: const Icon(Icons.share_rounded),
+                title: Text(
+                  'Share',
+                  style: listStyle,
+                ),
+                onPress: () async {
+                  await Share.share(
+                      'Download CARTZONE from Playstore For Free \nWith CARTZONE you purchase mobile phones, tablets and laptops of various brands. Download Now On Playstore');
+                },
+              ),
               // ListTileWidget(
               //   icon: const Icon(Icons.security_rounded),
               //   title: Text(
@@ -134,10 +136,8 @@ class ProfileScreen extends StatelessWidget {
               //     Navigator.push(
               //       context,
               //       MaterialPageRoute(
-              //         builder: ((context) => SettingsScreenWidget(
-              //               screenName: 'Privacy Policy',
-              //             )
-              //           ),
+              //         builder: ((context) =>
+              //             SettingsScreenWidget(screenName: 'Privacy Policy')),
               //       ),
               //     );
               //   },

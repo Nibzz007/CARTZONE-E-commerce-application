@@ -5,7 +5,7 @@ import 'package:second_project/model/product_model.dart';
 import 'package:second_project/model/wishlist_model.dart';
 import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/show_snack_bar.dart';
-import '../../../view/utils/constants/size/sized_box.dart';
+import '../../utils/constants/size/sized_box.dart';
 import '../selected_item_screen.dart';
 
 class ContainerWidget extends StatelessWidget {
@@ -19,7 +19,7 @@ class ContainerWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return GestureDetector(
       onTap: () {
         Navigator.of(context).push(
           MaterialPageRoute(
@@ -38,6 +38,7 @@ class ContainerWidget extends StatelessWidget {
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.all(8.0),
@@ -67,17 +68,17 @@ class ContainerWidget extends StatelessWidget {
                               );
                             } else if (snapshot.hasData) {
                               final wishlist = snapshot.data;
-                              return InkWell(
+                              return GestureDetector(
                                 onTap: () async {
-                                  showDialog(
-                                    context: context,
-                                    builder: ((context) {
-                                      return const Center(
-                                        child: CircularProgressIndicator(),
-                                      );
-                                    }),
-                                    barrierDismissible: false,
-                                  );
+                                  // showDialog(
+                                  //   context: context,
+                                  //   builder: ((context) {
+                                  //     return const Center(
+                                  //       child: CircularProgressIndicator(),
+                                  //     );
+                                  //   }),
+                                  //   barrierDismissible: false,
+                                  // );
                                   if (wishlist
                                       .where((element) =>
                                           element.productName ==
@@ -128,16 +129,15 @@ class ContainerWidget extends StatelessWidget {
             ),
             kHeight5,
             Column(
+             
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                  ),
+                  padding: const EdgeInsets.only(left: 10),
                   child: Text(
                     product.productName,
                     maxLines: 1,
                     style: TextStyle(
-                      fontSize: 15,
+                      fontSize: 13,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -146,20 +146,16 @@ class ContainerWidget extends StatelessWidget {
             ),
             kHeight5,
             Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.only(
-                    left: 5,
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.only(left: 5),
-                    child: Text(
-                      '₹ ${product.price}',
-                      textAlign: TextAlign.start,
-                      style: TextStyle(
-                        fontSize: 13,
-                        fontWeight: FontWeight.w600,
-                      ),
+                  padding: const EdgeInsets.only(left: 10),
+                  child: Text(
+                    '₹ ${product.price}',
+                    textAlign: TextAlign.start,
+                    style: TextStyle(
+                      fontSize: 13,
+                      fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),

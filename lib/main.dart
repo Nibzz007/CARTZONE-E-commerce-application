@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-import 'model/google_sign_in.dart';
+import 'controller/google_sign_in.dart';
 import 'view/splash/splash_screen.dart';
 
 Future<dynamic> main() async {
@@ -24,16 +24,18 @@ class MyApp extends StatelessWidget {
       },
       child: ScreenUtilInit(
         useInheritedMediaQuery: true,
-        designSize: Size(390, 690), 
+        designSize: Size(360, 690),
         builder: (_, child) {
           return MaterialApp(
-          theme: ThemeData(
-            appBarTheme: AppBarTheme(backgroundColor: Colors.deepPurple),
-          ),
-          navigatorKey: navigatorKey,
-          debugShowCheckedModeBanner: false,
-          home: SplashScreen(),
-        );
+            theme: ThemeData(
+              appBarTheme: AppBarTheme(
+                backgroundColor: Colors.deepPurple,
+              ),
+            ),
+            navigatorKey: navigatorKey,
+            debugShowCheckedModeBanner: false,
+            home: SplashScreen(),
+          );
         },
       ),
     );

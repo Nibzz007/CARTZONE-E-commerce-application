@@ -74,7 +74,7 @@ TextStyle nameStyle = TextStyle(
 
 TextStyle listStyle = TextStyle(
   fontSize: 16.sp,
-  fontWeight: FontWeight.w500,
+  fontWeight: FontWeight.w400,
 );
 
 //ShowDialog 

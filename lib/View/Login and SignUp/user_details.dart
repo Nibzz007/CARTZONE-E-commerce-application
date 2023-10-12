@@ -5,13 +5,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:second_project/main.dart';
 import 'package:second_project/view/utils/constants/style/text_style.dart';
-import '../../view/utils/colours/colours.dart';
+import '../../controller/firebase_auth_methods.dart';
+import '../utils/colours/colours.dart';
 import 'package:second_project/model/user_model.dart';
 
 import '../../View/Widgets/row_text_widget.dart';
 import '../../View/Widgets/text_form_field_widget.dart';
-import '../../view/utils/constants/size/sized_box.dart';
-import '../../model/firebase_auth_methods.dart';
+import '../utils/constants/size/sized_box.dart';
+//import '../../model/firebase_auth_methods.dart';
 
 class UserDetailsScreen extends StatefulWidget {
   UserDetailsScreen({
@@ -76,7 +77,7 @@ class _UserDetailsScreenState extends State<UserDetailsScreen> {
                       Positioned(
                         bottom: 10,
                         right: 0,
-                        child: InkWell(
+                        child: GestureDetector(
                           onTap: () {
                             pickImage();
                           },

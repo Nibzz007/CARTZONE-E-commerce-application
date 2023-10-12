@@ -67,7 +67,7 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                       Positioned(
                         bottom: 10,
                         right: 0,
-                        child: InkWell(
+                        child: GestureDetector(
                           onTap: () async {
                             await pickImage();
                           },

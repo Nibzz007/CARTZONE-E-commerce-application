@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../view/utils/constants/style/text_style.dart';
+import '../utils/constants/style/text_style.dart';
 
 class ElevatedButtonWidget extends StatelessWidget {
   const ElevatedButtonWidget({

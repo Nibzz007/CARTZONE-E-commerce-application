@@ -4,12 +4,15 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 class GoogleSignInProvider extends ChangeNotifier {
   final GoogleSignIn googleSignIn = GoogleSignIn();
-  late GoogleSignInAccount? _user;
-  GoogleSignInAccount get user => _user!;
+  late GoogleSignInAccount?
+      _user;
+  GoogleSignInAccount get user =>
+      _user!; 
 
   Future<dynamic> googleLogIn() async {
     try {
-      final GoogleSignInAccount? googleUser = await googleSignIn.signIn();
+      final GoogleSignInAccount? googleUser = await googleSignIn
+          .signIn(); 
       if (googleUser == null) {
         return;
       }

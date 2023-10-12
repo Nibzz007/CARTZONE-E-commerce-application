@@ -7,7 +7,10 @@ import 'package:second_project/view/utils/colours/colours.dart';
 import 'package:second_project/view/utils/constants/size/sized_box.dart';
 
 class CheckoutAddress extends StatelessWidget {
-  CheckoutAddress({super.key, required this.callBackAddress});
+  CheckoutAddress({
+    super.key,
+    required this.callBackAddress,
+  });
 
   final user = FirebaseAuth.instance.currentUser!.email;
   final void Function(Address) callBackAddress;
@@ -97,7 +100,7 @@ class CheckoutAddress extends StatelessWidget {
                               subtitle: Text(address.addressDetails),
                             ),
                             Divider(thickness: 0.8),
-                            InkWell(
+                            GestureDetector(
                               onTap: (() async {
                                 final addressName =
                                     await Navigator.of(context).push(
